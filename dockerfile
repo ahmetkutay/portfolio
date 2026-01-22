@@ -1,5 +1,5 @@
-# build stage
-FROM node:20-alpine AS build
+# 1) Build stage
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
@@ -8,11 +8,12 @@ RUN npm install
 
 COPY . .
 RUN npm run build
+RUN npm run export
 
-# prod stage
+# 2) Serve stage (nginx)
 FROM nginx:stable-alpine
 
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=builder /app/out /usr/share/nginx/html
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
