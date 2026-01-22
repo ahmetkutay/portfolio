@@ -1,12 +1,12 @@
 services:
   frontend:
-    build: .
-    image: kutaykaracair_frontend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     networks:
       - web
     expose:
       - "80"
-
 networks:
   web:
     external: true
