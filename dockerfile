@@ -3,17 +3,14 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
 RUN npm run build
+# output: 'export' varsa Next build sonunda /app/out oluşur
 
-# 2) Run
-FROM node:20-alpine
-WORKDIR /app
-
-COPY --from=builder /app ./
-
-EXPOSE 3000
-ENV HOST=0.0.0.0
-CMD ["npm", "start"]
+# 2) Serve (static)
+FROM nginx:stable-alpine
+COPY --from=builder /app/out /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

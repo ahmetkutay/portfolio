@@ -7,10 +7,8 @@ services:
     networks:
       - web
     expose:
-      - "3000"
-    environment:
-      - NODE_ENV=production
-      - HOST=0.0.0.0
+      - "80"
+
 networks:
   web:
     external: true
