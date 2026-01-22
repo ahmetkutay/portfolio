@@ -1,19 +1,19 @@
-# 1) build stage
+# 1) Build
 FROM node:20-alpine AS builder
-
 WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN npm install
 
 COPY . .
-
 RUN npm run build
 
-# 2) nginx serve
-FROM nginx:stable-alpine
+# 2) Run
+FROM node:20-alpine
+WORKDIR /app
 
-COPY --from=builder /app/out/ /usr/share/nginx/html/
+COPY --from=builder /app ./
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3000
+ENV HOST=0.0.0.0
+CMD ["npm", "start"]
