@@ -301,7 +301,7 @@ const content = {
     ],
     contact: {
       title: "Birlikte uretebiliriz",
-      tr: "Yeni projeler, is birlikleri ve urun fikirleri icin her zaman acigim.",
+      text: "Yeni projeler, is birlikleri ve urun fikirleri icin her zaman acigim.",
     },
     education: "BSc in Computer Engineering · 09/2017 - 07/2021",
     hobbies:
@@ -356,7 +356,7 @@ const content = {
     ],
     contact: {
       title: "Let us build together",
-      en: "Open to new projects, collaborations, and product ideas.",
+      text: "Open to new projects, collaborations, and product ideas.",
     },
     education: "BSc in Computer Engineering · 09/2017 - 07/2021",
     hobbies:
@@ -702,9 +702,7 @@ export default function Home() {
             <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
               <div className="grid gap-4">
                 <h2 className="font-display text-3xl">{t.contact.title}</h2>
-                <p className="text-sm text-[#2f2a25]">
-                  {lang === "tr" ? t.contact.tr : t.contact.en}
-                </p>
+                <p className="text-sm text-[#2f2a25]">{t.contact.text}</p>
               </div>
               <div className="flex flex-col gap-3 text-sm">
                 <a className="text-[#1b1712]" href="mailto:kutaykaracair@gmail.com">
