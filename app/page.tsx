@@ -1,6 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
+import { AnimatedShinyText } from "@/components/magicui/animated-shiny-text";
+import { GridPattern } from "@/components/magicui/grid-pattern";
+import { Marquee } from "@/components/magicui/marquee";
+import { Meteors } from "@/components/magicui/meteors";
+import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
+import { RetroGrid } from "@/components/magicui/retro-grid";
+import { ShineBorder } from "@/components/magicui/shine-border";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 const projects = [
   {
@@ -368,183 +377,219 @@ const content = {
 export default function Home() {
   const [lang, setLang] = useState<"tr" | "en">("tr");
   const t = useMemo(() => content[lang], [lang]);
+  const navItems = [
+    { id: "projects", label: t.nav.projects },
+    { id: "experience", label: t.nav.experience },
+    { id: "skills", label: t.sections.skills },
+    { id: "contact", label: t.nav.contact },
+  ];
+  const skillRows = [
+    [...skills.frontend, ...skills.backend],
+    [...skills.databases, ...skills.cloud],
+    [...skills.specialties],
+  ];
+
+  const openResume = () => {
+    window.open("/resume/kutaykaracair_resume.pdf", "_blank", "noopener,noreferrer");
+  };
+
+  const openMail = () => {
+    window.location.href = "mailto:kutaykaracair@gmail.com";
+  };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#f4efe7] text-[#1b1712]">
-      <div className="pointer-events-none absolute -top-48 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,#ffd7a5,transparent_68%)] blur-2xl opacity-70" />
-      <div className="pointer-events-none absolute -right-32 top-64 h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle_at_center,#cde7ff,transparent_68%)] blur-2xl opacity-70" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(27,23,18,0.06)_1px,transparent_1px),linear-gradient(180deg,rgba(27,23,18,0.06)_1px,transparent_1px)] bg-[size:120px_120px] opacity-50" />
+    <div className="relative min-h-screen overflow-hidden bg-[#f8fbff] text-slate-900">
+      <div className="pointer-events-none absolute inset-x-0 -top-48 h-[560px] bg-[radial-gradient(circle_at_top,rgba(14,165,233,0.22),transparent_60%)]" />
+      <div className="pointer-events-none absolute -right-24 top-24 h-[380px] w-[380px] rounded-full bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.22),transparent_68%)] blur-2xl" />
+      <div className="pointer-events-none absolute -left-24 bottom-10 h-[360px] w-[360px] rounded-full bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.16),transparent_68%)] blur-2xl" />
+      <RetroGrid cellSize={72} opacity={0.45} />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(248,251,255,0.35)_0%,rgba(248,251,255,0.94)_75%)]" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col gap-20 px-6 pb-24 pt-10 sm:px-10">
-        <header className="flex flex-wrap items-center justify-between gap-6">
-          <div className="flex flex-col">
-            <span className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-              Portfolio
-            </span>
-            <span className="font-display text-2xl">Ahmet Kutay Karacair</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            <div className="flex items-center gap-2 rounded-full border border-[#1b1712]/20 p-1">
-              <button
-                className={`rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${
-                  lang === "tr"
-                    ? "bg-[#1b1712] text-[#f4efe7]"
-                    : "text-[#1b1712]"
-                }`}
-                onClick={() => setLang("tr")}
-                aria-pressed={lang === "tr"}
-                type="button"
-              >
-                TR
-              </button>
-              <button
-                className={`rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em] transition ${
-                  lang === "en"
-                    ? "bg-[#1b1712] text-[#f4efe7]"
-                    : "text-[#1b1712]"
-                }`}
-                onClick={() => setLang("en")}
-                aria-pressed={lang === "en"}
-                type="button"
-              >
-                EN
-              </button>
+      <div className="relative mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-20 pt-6 sm:px-10">
+        <header className="sticky top-4 z-50 rounded-2xl border border-slate-200/80 bg-white/70 shadow-[0_10px_40px_rgba(15,23,42,0.08)] backdrop-blur-xl">
+          <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-3 sm:px-6">
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.35em] text-cyan-700/80">
+                Portfolio
+              </span>
+              <span className="font-display text-lg sm:text-xl">Ahmet Kutay Karacair</span>
             </div>
-            <a
-              className="rounded-full border border-[#1b1712]/30 px-4 py-2 text-xs uppercase tracking-[0.2em] transition hover:border-[#1b1712]"
-              href="/resume/kutaykaracair_resume.pdf"
-            >
-              {t.nav.resume}
-            </a>
+
+            <nav className="hidden items-center gap-4 text-xs uppercase tracking-[0.18em] text-slate-500 md:flex">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  className="transition hover:text-slate-900"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-3">
+              <div className="flex items-center rounded-full border border-slate-300 bg-white p-1 text-xs">
+                <button
+                  className={`rounded-full px-3 py-1 uppercase tracking-[0.2em] transition ${
+                    lang === "tr" ? "bg-slate-900 text-white" : "text-slate-600"
+                  }`}
+                  onClick={() => setLang("tr")}
+                  type="button"
+                  aria-pressed={lang === "tr"}
+                >
+                  TR
+                </button>
+                <button
+                  className={`rounded-full px-3 py-1 uppercase tracking-[0.2em] transition ${
+                    lang === "en" ? "bg-slate-900 text-white" : "text-slate-600"
+                  }`}
+                  onClick={() => setLang("en")}
+                  type="button"
+                  aria-pressed={lang === "en"}
+                >
+                  EN
+                </button>
+              </div>
+              <a
+                className="rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-[0.2em] text-slate-700 transition hover:border-slate-600 hover:text-slate-900"
+                href="/resume/kutaykaracair_resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.nav.resume}
+              </a>
+            </div>
           </div>
         </header>
 
-        <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="rounded-full bg-[#1b1712] px-4 py-2 text-xs uppercase tracking-[0.2em] text-[#f4efe7]">
-                {t.hero.tag}
-              </span>
-              <span className="text-sm text-[#5f5a53]">{t.hero.subtitle}</span>
+        <section className="relative grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <Meteors number={14} className="hidden md:block" />
+
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex w-fit items-center rounded-full border border-cyan-200 bg-cyan-50/70 px-4 py-2 text-xs uppercase tracking-[0.2em] text-cyan-700">
+              <AnimatedGradientText speed={1.1} colorFrom="#0ea5e9" colorTo="#f97316">
+                {t.hero.subtitle}
+              </AnimatedGradientText>
             </div>
+
             <h1 className="font-display text-4xl leading-tight sm:text-5xl lg:text-6xl">
               {t.hero.headline}
             </h1>
-            <div className="grid gap-4 rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.12)] backdrop-blur">
-              <p className="text-lg leading-relaxed text-[#2f2a25]">
-                {t.hero.about}
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-4">
-              <a
-                className="rounded-full bg-[#f1642e] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#d85323]"
-                href="/resume/kutaykaracair_resume.pdf"
+
+            <AnimatedShinyText className="max-w-2xl text-lg leading-relaxed text-slate-700" shimmerWidth={180}>
+              {t.hero.about}
+            </AnimatedShinyText>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <ShimmerButton
+                type="button"
+                onClick={openResume}
+                background="#0f172a"
+                shimmerColor="#67e8f9"
               >
                 {t.hero.ctaPrimary}
-              </a>
-              <a
-                className="rounded-full border border-[#1b1712] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#1b1712] transition hover:bg-[#1b1712] hover:text-[#f4efe7]"
-                href="mailto:kutaykaracair@gmail.com"
+              </ShimmerButton>
+              <button
+                type="button"
+                onClick={openMail}
+                className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
               >
                 {t.hero.ctaSecondary}
-              </a>
-              <a
-                className="rounded-full border border-[#1b1712]/30 px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[#1b1712] transition hover:border-[#1b1712]"
-                href="https://kutaykaracair.com"
-              >
-                {t.hero.ctaTertiary}
-              </a>
+              </button>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3">
+              {stats.map((stat) => (
+                <div
+                  key={`${stat.label.en}-${stat.value}`}
+                  className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-[0_12px_28px_rgba(15,23,42,0.06)]"
+                >
+                  <p className="font-display text-3xl">{stat.value}</p>
+                  <p className="text-xs uppercase tracking-[0.2em] text-slate-500">
+                    {stat.label[lang]}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur">
-            <div className="flex items-center justify-between">
-              <span className="text-sm uppercase tracking-[0.3em] text-[#a16b2e]">
-                {t.snapshot.title}
-              </span>
-              <span className="text-xs text-[#5f5a53]">{t.snapshot.subtitle}</span>
-            </div>
-            <div className="grid grid-cols-2 gap-4 text-center">
-              {stats.map((stat) => (
-                <div
-                  key={stat.value}
-                  className="rounded-2xl border border-[#1b1712]/10 bg-[#f4efe7]/80 p-4"
+          <div className="relative overflow-hidden rounded-[28px] border border-slate-200 bg-white/75 p-6 shadow-[0_24px_60px_rgba(14,165,233,0.1)] backdrop-blur">
+            <ShineBorder
+              borderWidth={1.4}
+              duration={13}
+              shineColor={["#22d3ee", "#f97316", "#38bdf8"]}
+            />
+            <GridPattern
+              width={48}
+              height={48}
+              x={-2}
+              y={-2}
+              className="[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]"
+            />
+
+            <div className="relative z-10 flex flex-col gap-6">
+              <div className="flex items-center justify-between">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">{t.snapshot.title}</p>
+                <p className="text-xs text-slate-500">{t.snapshot.subtitle}</p>
+              </div>
+
+              <div className="relative mx-auto flex aspect-square w-full max-w-[320px] items-center justify-center rounded-full border border-slate-200 bg-slate-50/80">
+                <OrbitingCircles radius={118} iconSize={42} className="bg-white text-xs font-semibold text-slate-700 shadow-sm">
+                  {["AWS", "AI", "Node", "React", "Redis", "API"].map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </OrbitingCircles>
+                <OrbitingCircles
+                  radius={74}
+                  iconSize={34}
+                  reverse
+                  speed={1.35}
+                  className="bg-cyan-50 text-[10px] font-semibold uppercase tracking-[0.08em] text-cyan-800"
                 >
-                  <div className="font-display text-3xl">{stat.value}</div>
-                  <div className="text-xs uppercase tracking-[0.2em] text-[#5f5a53]">
-                    {stat.label[lang]}
+                  {["Scale", "Cloud", "Perf", "CI/CD"].map((item) => (
+                    <span key={item}>{item}</span>
+                  ))}
+                </OrbitingCircles>
+                <div className="relative z-20 rounded-full border border-slate-200 bg-white px-6 py-5 text-center shadow-[0_10px_25px_rgba(15,23,42,0.1)]">
+                  <p className="font-display text-xl">{t.hero.tag}</p>
+                </div>
+              </div>
+
+              <p className="text-sm text-slate-600">{t.snapshot.note}</p>
+              <div className="grid gap-3">
+                {highlights.map((item) => (
+                  <div key={item.title.en} className="rounded-2xl border border-slate-200/80 bg-white/70 px-4 py-3">
+                    <p className="text-[11px] uppercase tracking-[0.2em] text-cyan-700">
+                      {item.title[lang]}
+                    </p>
+                    <p className="text-sm text-slate-700">{lang === "tr" ? item.tr : item.en}</p>
                   </div>
-                </div>
-              ))}
-            </div>
-            <p className="text-sm text-[#2f2a25]">{t.snapshot.note}</p>
-            <div className="grid gap-4">
-              {highlights.map((item) => (
-                <div key={item.title.en} className="rounded-2xl border border-[#1b1712]/10 p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#a16b2e]">
-                    {item.title[lang]}
-                  </p>
-                  <p className="text-sm text-[#2f2a25]">
-                    {lang === "tr" ? item.tr : item.en}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         <section id="approach" className="grid gap-6">
-          <h2 className="font-display text-3xl">{t.sections.approach}</h2>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {t.approach.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur"
-              >
-                <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-                  {item.title}
-                </p>
-                <p className="mt-3 text-sm text-[#2f2a25]">{item.text}</p>
-              </div>
-            ))}
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-3xl">{t.sections.approach}</h2>
+            <AnimatedGradientText className="text-sm uppercase tracking-[0.18em]">
+              Product + Engineering Mindset
+            </AnimatedGradientText>
           </div>
-        </section>
-
-        <section id="experience" className="grid gap-6">
-          <div className="flex items-end justify-between">
-            <h2 className="font-display text-3xl">{t.sections.experience}</h2>
-          </div>
-          <div className="grid gap-6">
-            {experience.map((item) => (
+          <div className="grid gap-5 lg:grid-cols-3">
+            {t.approach.map((item, index) => (
               <article
-                key={`${item.company}-${item.location}`}
-                className="grid gap-4 rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur"
+                key={item.title}
+                className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-[0_14px_35px_rgba(15,23,42,0.07)]"
               >
-                <div className="flex flex-wrap items-center justify-between gap-4">
-                  <div>
-                    <h3 className="font-display text-xl">{item.company}</h3>
-                    <p className="text-sm text-[#5f5a53]">{item.location}</p>
-                  </div>
-                </div>
-                <div className="grid gap-6">
-                  {item.roles.map((role) => (
-                    <div
-                      key={`${item.company}-${role.title}`}
-                      className="rounded-2xl border border-[#1b1712]/10 bg-[#f4efe7]/60 p-4"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h4 className="font-display text-lg">{role.title}</h4>
-                        <span className="text-xs uppercase tracking-[0.2em] text-[#a16b2e]">
-                          {role.period}
-                        </span>
-                      </div>
-                      <ul className="mt-3 list-disc space-y-2 pl-4 text-sm text-[#2f2a25]">
-                        {(lang === "tr" ? role.tr : role.en).map((bullet) => (
-                          <li key={bullet}>{bullet}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                <ShineBorder borderWidth={1.2} duration={11 + index * 2} shineColor={["#06b6d4", "#fb7185", "#f59e0b"]} />
+                <div className="relative z-10">
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
+                    0{index + 1}
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.text}</p>
                 </div>
               </article>
             ))}
@@ -552,77 +597,120 @@ export default function Home() {
         </section>
 
         <section id="projects" className="grid gap-6">
-          <div className="flex items-end justify-between">
+          <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="font-display text-3xl">{t.sections.projects}</h2>
-            <span className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-              02 Selected
-            </span>
           </div>
+
           <div className="grid gap-6 lg:grid-cols-2">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <article
                 key={project.name}
-                className="group flex flex-col gap-6 rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur transition hover:-translate-y-1"
+                className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/85 p-6 shadow-[0_18px_45px_rgba(2,6,23,0.08)]"
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-                      {project.period}
-                    </p>
-                    <h3 className="font-display text-2xl">{project.name}</h3>
-                    <p className="text-sm text-[#5f5a53]">
-                      {project.title[lang]}
-                    </p>
-                  </div>
-                  <a
-                    className="text-xs uppercase tracking-[0.2em] text-[#1b1712]"
-                    href={project.link}
-                  >
-                    Visit
-                  </a>
-                </div>
-                <div className="grid gap-4 text-sm text-[#2f2a25]">
-                  <p>
-                    <span className="text-xs uppercase tracking-[0.2em] text-[#a16b2e]">
-                      {lang === "tr" ? "Problem" : "Problem"}
-                    </span>
-                    <span className="ml-2">
-                      {lang === "tr" ? project.problem.tr : project.problem.en}
-                    </span>
-                  </p>
-                  <p>
-                    <span className="text-xs uppercase tracking-[0.2em] text-[#a16b2e]">
-                      {lang === "tr" ? "Cozum" : "Solution"}
-                    </span>
-                    <span className="ml-2">
-                      {lang === "tr" ? project.solution.tr : project.solution.en}
-                    </span>
-                  </p>
-                  <p>
-                    <span className="text-xs uppercase tracking-[0.2em] text-[#a16b2e]">
-                      {lang === "tr" ? "Etki" : "Impact"}
-                    </span>
-                    <span className="ml-2">
-                      {lang === "tr" ? project.impact.tr : project.impact.en}
-                    </span>
-                  </p>
-                  <ul className="list-disc space-y-2 pl-4">
-                    {(lang === "tr" ? project.details.tr : project.details.en).map(
-                      (item) => (
-                        <li key={item}>{item}</li>
-                      )
-                    )}
-                  </ul>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-[#1b1712]/20 px-3 py-1 text-xs"
+                <ShineBorder borderWidth={1.2} duration={10 + index * 2} shineColor={["#22d3ee", "#f97316", "#38bdf8"]} />
+                <GridPattern
+                  width={56}
+                  height={56}
+                  className="[mask-image:radial-gradient(320px_circle_at_top,white,transparent)] opacity-60"
+                />
+
+                <div className="relative z-10 flex flex-col gap-5">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.22em] text-slate-500">{project.period}</p>
+                      <h3 className="font-display text-2xl">{project.name}</h3>
+                      <p className="text-sm text-slate-600">{project.title[lang]}</p>
+                    </div>
+                    <a
+                      className="rounded-full border border-slate-300 px-4 py-2 text-xs uppercase tracking-[0.2em] text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      {item}
-                    </span>
-                  ))}
+                      Visit
+                    </a>
+                  </div>
+
+                  <div className="grid gap-3 text-sm text-slate-700">
+                    <p>
+                      <span className="text-xs uppercase tracking-[0.2em] text-cyan-700">
+                        {lang === "tr" ? "Problem" : "Problem"}
+                      </span>
+                      <span className="ml-2">{lang === "tr" ? project.problem.tr : project.problem.en}</span>
+                    </p>
+                    <p>
+                      <span className="text-xs uppercase tracking-[0.2em] text-cyan-700">
+                        {lang === "tr" ? "Cozum" : "Solution"}
+                      </span>
+                      <span className="ml-2">{lang === "tr" ? project.solution.tr : project.solution.en}</span>
+                    </p>
+                    <p>
+                      <span className="text-xs uppercase tracking-[0.2em] text-cyan-700">
+                        {lang === "tr" ? "Etki" : "Impact"}
+                      </span>
+                      <span className="ml-2">{lang === "tr" ? project.impact.tr : project.impact.en}</span>
+                    </p>
+                    <ul className="list-disc space-y-1.5 pl-4">
+                      {(lang === "tr" ? project.details.tr : project.details.en).map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-slate-300 bg-white/90 px-3 py-1 text-[11px] uppercase tracking-[0.12em] text-slate-600"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="experience" className="grid gap-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-3xl">{t.sections.experience}</h2>
+            <AnimatedShinyText className="text-sm uppercase tracking-[0.2em] text-slate-500">
+              Shipping Reliable Systems Since 2021
+            </AnimatedShinyText>
+          </div>
+
+          <div className="grid gap-6">
+            {experience.map((item, companyIndex) => (
+              <article
+                key={`${item.company}-${item.location}`}
+                className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/85 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.07)]"
+              >
+                <ShineBorder borderWidth={1.1} duration={12 + companyIndex} shineColor={["#22d3ee", "#0ea5e9", "#fb923c"]} />
+                <div className="relative z-10 space-y-5">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <h3 className="font-display text-2xl">{item.company}</h3>
+                      <p className="text-sm text-slate-500">{item.location}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 border-l border-slate-200 pl-4">
+                    {item.roles.map((role) => (
+                      <div key={`${item.company}-${role.title}`} className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="font-display text-lg">{role.title}</h4>
+                          <span className="text-xs uppercase tracking-[0.18em] text-cyan-700">{role.period}</span>
+                        </div>
+                        <ul className="mt-3 list-disc space-y-1.5 pl-4 text-sm text-slate-700">
+                          {(lang === "tr" ? role.tr : role.en).map((bullet) => (
+                            <li key={bullet}>{bullet}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </article>
             ))}
@@ -630,95 +718,107 @@ export default function Home() {
         </section>
 
         <section id="skills" className="grid gap-6">
-          <h2 className="font-display text-3xl">{t.sections.skills}</h2>
-          <div className="rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur">
-            <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="grid gap-6">
-                {[
-                  { label: "Frontend", items: skills.frontend },
-                  { label: "Backend", items: skills.backend },
-                  { label: "Databases", items: skills.databases },
-                  { label: "Cloud & Tools", items: skills.cloud },
-                ].map((group) => (
-                  <div key={group.label} className="rounded-2xl border border-[#1b1712]/10 bg-[#f4efe7]/60 p-4">
-                    <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-                      {group.label}
-                    </p>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {group.items.map((item) => (
-                        <span
-                          key={item}
-                          className="rounded-full border border-[#1b1712]/20 bg-white/80 px-3 py-1 text-xs"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="rounded-2xl border border-[#1b1712]/10 bg-[#f4efe7]/80 p-5 text-[#1b1712]">
-                <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-                  Focus
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {skills.specialties.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-[#1b1712]/20 px-3 py-1 text-xs"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-6 text-sm text-[#2f2a25]">
-                  {lang === "tr"
-                    ? "Sistem tasarimi, performans optimizasyonu ve bulut olceklenebilirligi uzerine calisiyorum."
-                    : "I focus on system design, performance optimization, and scalable cloud architecture."}
-                </p>
-              </div>
-            </div>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <h2 className="font-display text-3xl">{t.sections.skills}</h2>
+          </div>
+
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-5 shadow-[0_18px_40px_rgba(15,23,42,0.07)]">
+            <Marquee pauseOnHover className="[--duration:32s]">
+              {skillRows[0].map((item) => (
+                <span
+                  key={`row-0-${item}`}
+                  className="rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-xs uppercase tracking-[0.16em] text-sky-800"
+                >
+                  {item}
+                </span>
+              ))}
+            </Marquee>
+            <Marquee reverse pauseOnHover className="[--duration:40s]">
+              {skillRows[1].map((item) => (
+                <span
+                  key={`row-1-${item}`}
+                  className="rounded-full border border-amber-200 bg-amber-50 px-4 py-2 text-xs uppercase tracking-[0.16em] text-amber-800"
+                >
+                  {item}
+                </span>
+              ))}
+            </Marquee>
+            <Marquee pauseOnHover className="[--duration:36s]">
+              {skillRows[2].map((item) => (
+                <span
+                  key={`row-2-${item}`}
+                  className="rounded-full border border-emerald-200 bg-emerald-50 px-4 py-2 text-xs uppercase tracking-[0.16em] text-emerald-800"
+                >
+                  {item}
+                </span>
+              ))}
+            </Marquee>
           </div>
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-              {t.sections.education}
-            </p>
+        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <article className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-[0_14px_32px_rgba(15,23,42,0.06)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{t.sections.education}</p>
             <h3 className="mt-3 font-display text-2xl">Sakarya University</h3>
-            <p className="text-sm text-[#5f5a53]">{t.education}</p>
-          </div>
-          <div className="rounded-3xl border border-[#1b1712]/15 bg-white/70 p-6 shadow-[0_20px_50px_rgba(27,23,18,0.08)] backdrop-blur">
-            <p className="text-xs uppercase tracking-[0.3em] text-[#a16b2e]">
-              {t.sections.hobbies}
-            </p>
-            <p className="mt-4 text-sm text-[#2f2a25]">{t.hobbies}</p>
-          </div>
+            <p className="mt-2 text-sm text-slate-600">{t.education}</p>
+          </article>
+
+          <article className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-[0_14px_32px_rgba(15,23,42,0.06)]">
+            <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{t.sections.hobbies}</p>
+            <p className="mt-3 text-sm text-slate-600">{t.hobbies}</p>
+          </article>
         </section>
 
-        <section id="contact" className="grid gap-6">
-          <div className="rounded-3xl border border-[#1b1712]/15 bg-[#f4efe7] p-8 text-[#1b1712] shadow-[0_20px_50px_rgba(27,23,18,0.2)]">
-            <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="grid gap-4">
-                <h2 className="font-display text-3xl">{t.contact.title}</h2>
-                <p className="text-sm text-[#2f2a25]">{t.contact.text}</p>
+        <section id="contact" className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/85 p-8 text-slate-900 shadow-[0_18px_45px_rgba(15,23,42,0.08)]">
+          <GridPattern
+            width={64}
+            height={64}
+            className="fill-cyan-300/20 stroke-slate-300/35 [mask-image:radial-gradient(500px_circle_at_right,white,transparent)]"
+          />
+          <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="space-y-4">
+              <h2 className="font-display text-4xl">{t.contact.title}</h2>
+              <p className="max-w-xl text-sm leading-relaxed text-slate-600">{t.contact.text}</p>
+              <div className="pt-2">
+                <ShimmerButton
+                  type="button"
+                  onClick={openMail}
+                  background="#0f172a"
+                  shimmerColor="#22d3ee"
+                >
+                  {lang === "tr" ? "E-posta Gonder" : "Send Email"}
+                </ShimmerButton>
               </div>
-              <div className="flex flex-col gap-3 text-sm">
-                <a className="text-[#1b1712]" href="mailto:kutaykaracair@gmail.com">
-                  kutaykaracair@gmail.com
-                </a>
-                <a className="text-[#1b1712]" href="https://www.linkedin.com/in/ahmetkutay">
-                  linkedin.com/in/ahmetkutay
-                </a>
-                <a className="text-[#1b1712]" href="https://kutaykaracair.com">
-                  kutaykaracair.com
-                </a>
-              </div>
+            </div>
+
+            <div className="grid gap-3 text-sm">
+              <a className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-700 transition hover:border-slate-900 hover:text-slate-900" href="mailto:kutaykaracair@gmail.com">
+                kutaykaracair@gmail.com
+              </a>
+              <a
+                className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
+                href="https://www.linkedin.com/in/ahmetkutay"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/ahmetkutay
+              </a>
+              <a
+                className="rounded-2xl border border-slate-300 bg-white px-4 py-3 text-slate-700 transition hover:border-slate-900 hover:text-slate-900"
+                href="https://kutaykaracair.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                kutaykaracair.com
+              </a>
             </div>
           </div>
         </section>
 
+        <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 py-2 text-xs uppercase tracking-[0.18em] text-slate-500">
+          <span>Ahmet Kutay Karacair</span>
+          <span>{t.footer}</span>
+        </footer>
       </div>
     </div>
   );
