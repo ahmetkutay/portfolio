@@ -32,18 +32,8 @@ const projects = [
       en: "A fast, resource-efficient backend foundation built to scale.",
     },
     details: {
-      tr: [
-        "Kullanicilara itinerary, konaklama, restoran ve aktivite onerileri.",
-        "Primary DB: AWS RDS (PostgreSQL), cache: AWS ElastiCache (Redis).",
-        "AI servisleriyle entegrasyon, yanitlari isleyip normalize etme.",
-        "Gelecek plan: chat gruplari ve community ozellikleri.",
-      ],
-      en: [
-        "Itineraries with lodging, restaurant, and activity suggestions.",
-        "Primary DB: AWS RDS (PostgreSQL), cache: AWS ElastiCache (Redis).",
-        "AI service integrations with response processing and normalization.",
-        "Roadmap: chat groups and community features.",
-      ],
+      tr: [],
+      en: [],
     },
     stack: [
       "Node.js",
@@ -76,18 +66,8 @@ const projects = [
       en: "Up-to-date analysis combining multi-AI signals with match data.",
     },
     details: {
-      tr: [
-        "moxakk-client: landing, auth ve dashboard/fixtures/analysis/profil.",
-        "moxakk-server: auth, user, fixtures, analysis API endpoint'leri.",
-        "Claude/OpenAI/Gemini sinyalleriyle ensemble tahmin uretiyor.",
-        "API-Sports verisi, Prisma + Postgres, Redis cache ve e-posta bildirimleri.",
-      ],
-      en: [
-        "moxakk-client: landing, auth, dashboard/fixtures/analysis/profile.",
-        "moxakk-server: auth, user, fixtures, analysis API endpoints.",
-        "Ensemble predictions from Claude/OpenAI/Gemini signals.",
-        "API-Sports data, Prisma + Postgres, Redis cache, email notifications.",
-      ],
+      tr: [],
+      en: [],
     },
     stack: [
       "Next.js",
@@ -375,7 +355,7 @@ const content = {
 };
 
 export default function Home() {
-  const [lang, setLang] = useState<"tr" | "en">("tr");
+  const [lang, setLang] = useState<"tr" | "en">("en");
   const t = useMemo(() => content[lang], [lang]);
   const navItems = [
     { id: "projects", label: t.nav.projects },
@@ -650,11 +630,13 @@ export default function Home() {
                       </span>
                       <span className="ml-2">{lang === "tr" ? project.impact.tr : project.impact.en}</span>
                     </p>
-                    <ul className="list-disc space-y-1.5 pl-4">
-                      {(lang === "tr" ? project.details.tr : project.details.en).map((detail) => (
-                        <li key={detail}>{detail}</li>
-                      ))}
-                    </ul>
+                    {(lang === "tr" ? project.details.tr : project.details.en).length > 0 && (
+                      <ul className="list-disc space-y-1.5 pl-4">
+                        {(lang === "tr" ? project.details.tr : project.details.en).map((detail) => (
+                          <li key={detail}>{detail}</li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   <div className="flex flex-wrap gap-2">
