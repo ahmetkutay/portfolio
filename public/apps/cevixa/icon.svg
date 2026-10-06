@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Cevixa">
+  <defs>
+    <path id="glass" d="M362 300C362 410 486 452 492 512C486 572 362 614 362 724L662 724C662 614 538 572 532 512C538 452 662 410 662 300Z"/>
+    <clipPath id="inside"><use href="#glass"/></clipPath>
+  </defs>
+  <rect width="1024" height="1024" rx="230" fill="#192020"/>
+  <g transform="translate(512 512) scale(1.22) translate(-512 -512)">
+    <g clip-path="url(#inside)" fill="#CBDC4E">
+      <path d="M300 432Q512 478 724 432V508H300Z"/>
+      <path d="M300 724V664Q512 600 724 664V724Z"/>
+    </g>
+    <rect x="507" y="500" width="10" height="128" rx="5" fill="#CBDC4E"/>
+    <use href="#glass" fill="none" stroke="#F8F8F4" stroke-width="24" stroke-linejoin="round"/>
+    <rect x="330" y="254" width="364" height="42" rx="21" fill="#F8F8F4"/>
+    <rect x="330" y="728" width="364" height="42" rx="21" fill="#F8F8F4"/>
+  </g>
+</svg>
