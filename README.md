@@ -7,12 +7,15 @@ Next.js served by nginx.
 ## Editing content
 
 All copy lives in `lib/content.ts` (apps, experience, toolbox, UI strings — each as an
-`{ en, tr }` pair). Components are in `components/site/`:
+`{ en, tr }` pair). The "Expedition" design adds its own copy, camp altitudes, map peaks
+and career waypoints in `lib/expedition.ts`. Components are in `components/expedition/`:
 
-- `portfolio.tsx` — page sections
-- `app-visuals.tsx` — the per-app illustrated panels
-- `hooks.ts` — language preference, Istanbul clock, scroll reveal
+- `expedition.tsx` — page sections (base camp → summit)
+- `topo-map.tsx` — generative contour map; apps are peaks, the cursor raises its own
+- `altimeter.tsx` — maps scroll position to altitude between the camps
+- `ascent-chart.tsx` — career elevation profile
 
+Shared hooks (language preference, Istanbul clock, scroll reveal) live in `lib/hooks.ts`.
 App screenshots and icons in `public/apps/` are copied from the Omnia Potentia site;
 the CV served at `/resume/kutaykaracair_resume.pdf` lives in `public/resume/`.
 

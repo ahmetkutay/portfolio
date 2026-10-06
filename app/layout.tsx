@@ -1,22 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
+import { Archivo, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin", "latin-ext"],
+  axes: ["wdth"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin", "latin-ext"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument",
-  subsets: ["latin", "latin-ext"],
-  weight: "400",
-  style: ["normal", "italic"],
+  weight: ["400", "500"],
 });
 
 const description =
@@ -41,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f3efe6",
+  themeColor: "#0c100f",
 };
 
 export default function RootLayout({
@@ -59,7 +54,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geist.variable} ${geistMono.variable} ${instrumentSerif.variable} antialiased`}>
+      <body className={`${archivo.variable} ${plexMono.variable} antialiased`}>
         {children}
       </body>
     </html>
