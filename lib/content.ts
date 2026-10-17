@@ -84,11 +84,11 @@ export const now: { label: Text; detail: Text }[] = [
   },
   {
     label: { en: "Senior Software Engineer, Accenture", tr: "Senior Software Engineer, Accenture" },
-    detail: { en: "Cloud and web platforms", tr: "Bulut ve web platformları" },
+    detail: { en: "LLM document pipelines on MCP", tr: "MCP üzerinde LLM doküman pipeline'ları" },
   },
   {
-    label: { en: "Shipping Onelior 2.0", tr: "Onelior 2.0 yayında" },
-    detail: { en: "The Climb — every workout is altitude", tr: "Tırmanış — her antrenman bir irtifa" },
+    label: { en: "Four apps live", tr: "Dört uygulama yayında" },
+    detail: { en: "Onelior, Cevixa, Dawnia on the App Store · Moxakk on the web", tr: "Onelior, Cevixa, Dawnia App Store'da · Moxakk web'de" },
   },
 ];
 
@@ -202,8 +202,9 @@ export const apps: App[] = [
     ],
     stack: ["SwiftUI", "Kotlin", "Jetpack Compose", "FastAPI", "PostgreSQL", "OpenAPI"],
     platforms: ["iOS", "Android"],
-    status: "soon",
+    status: "live",
     url: "https://appcevixa.com",
+    appStoreUrl: "https://apps.apple.com/app/cevixa-expense-tracker/id6818992503",
   },
   {
     slug: "dawnia",
@@ -231,8 +232,9 @@ export const apps: App[] = [
     ],
     stack: ["SwiftUI", "SwiftData", "WidgetKit", "ActivityKit", "App Intents"],
     platforms: ["iOS"],
-    status: "soon",
+    status: "live",
     url: "https://appdawnia.com",
+    appStoreUrl: "https://apps.apple.com/app/dawnia/id6819712758",
   },
   {
     slug: "travelersbase",
@@ -276,13 +278,21 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "08/2025 — Present",
         points: [
           {
-            en: "Work with UX/UI designers to turn designs into polished, production interfaces.",
-            tr: "UX/UI tasarımcılarıyla birlikte tasarımları canlıya hazır, özenli arayüzlere dönüştürüyorum.",
+            en: "AI document generation for a global pharmaceutical client: extending a Python MCP server with new rules and capabilities that power LLM pipelines — client guidelines and annotations become structured prompts, documents are generated from templates and reference files, then validated against the source requirements, with Claude Skills and MCP-based agents.",
+            tr: "Global bir ilaç müşterisi için yapay zekâ ile doküman üretimi: Python ile yazılmış bir MCP sunucusunu, LLM pipeline'larını besleyen yeni kurallar ve yeteneklerle genişletiyorum — müşteri yönergeleri ve notları yapılandırılmış prompt'lara dönüşüyor, dokümanlar şablon ve referans dosyalardan üretiliyor ve kaynak gereksinimlere göre doğrulanıyor; Claude Skills ve MCP tabanlı agent'larla.",
           },
           {
-            en: "Mentor junior developers and run code reviews to keep quality and standards high.",
-            tr: "Junior geliştiricilere mentorluk yapıyor, kod review'larla kaliteyi ve standartları yüksek tutuyorum.",
+            en: "Enterprise component library for a healthcare B2B client: architected the performance testing strategy with user-flow tests for 45+ components in Lighthouse, Vitest and Playwright, and contributed 7 production components within the design system.",
+            tr: "Sağlık sektöründe B2B bir müşterinin kurumsal bileşen kütüphanesi: performans test stratejisini kurdum; Lighthouse, Vitest ve Playwright ile 45+ bileşen için kullanıcı akışı bazlı testler yazdım ve tasarım sistemine 7 canlı bileşen kattım.",
           },
+          {
+            en: "Run code reviews and mentor teammates on backend architecture, cloud services and testing.",
+            tr: "Kod review'ları yapıyor; ekip arkadaşlarıma backend mimarisi, bulut servisleri ve test yöntemleri konusunda mentorluk ediyorum.",
+          },
+        ],
+        metrics: [
+          { en: "45+ components perf-tested", tr: "45+ bileşen performans testi" },
+          { en: "7 production components", tr: "7 canlı bileşen" },
         ],
       },
       {
@@ -290,12 +300,12 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "03/2025 — 08/2025",
         points: [
           {
-            en: "Architected and deployed AWS services with Node.js and Angular, improving scalability and cutting latency across distributed systems.",
-            tr: "Node.js ve Angular ile AWS servisleri tasarlayıp yayına aldım; dağıtık sistemlerde ölçeklenebilirliği artırıp gecikmeyi düşürdüm.",
+            en: "Built the backend of a full-stack data platform on Node.js and AWS: serverless REST APIs on Lambda and API Gateway, an event-driven messaging layer on SNS and SQS, and Spark ETL pipelines in AWS Glue feeding Athena for SQL over managed tables.",
+            tr: "Node.js ve AWS üzerinde full-stack bir veri platformunun backend'ini geliştirdim: Lambda ve API Gateway ile serverless REST API'ler, SNS ve SQS ile olay güdümlü mesajlaşma katmanı ve yönetilen tablolar üzerinde SQL için Athena'yı besleyen AWS Glue Spark ETL pipeline'ları.",
           },
           {
-            en: "Championed DevOps practices and evaluated new cloud technologies for the platform roadmap.",
-            tr: "DevOps pratiklerini yaygınlaştırdım ve platform yol haritası için yeni bulut teknolojilerini değerlendirdim.",
+            en: "Managed IAM-based access control, used CloudWatch for monitoring and incident investigation, set up Grafana dashboards and delivered the Angular frontend that surfaces the data.",
+            tr: "IAM tabanlı erişim kontrolünü yönettim, izleme ve olay incelemesi için CloudWatch kullandım, Grafana panoları kurdum ve veriyi gösteren Angular arayüzünü teslim ettim.",
           },
         ],
       },
@@ -310,8 +320,8 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "03/2024 — 01/2025",
         points: [
           {
-            en: "Optimised and refactored the frontend for faster content delivery and better engagement.",
-            tr: "Daha hızlı içerik sunumu ve daha iyi etkileşim için frontend'i optimize edip yeniden yapılandırdım.",
+            en: "Refactored critical rendering paths and trimmed bundle size in React and Next.js apps, cutting page load by 40% and lifting content engagement across the platform.",
+            tr: "React ve Next.js uygulamalarında kritik render yollarını yeniden yapılandırıp bundle boyutunu küçülttüm; sayfa yüklemeyi %40 kısaltıp platform genelinde içerik etkileşimini artırdım.",
           },
           {
             en: "Established reusable component libraries and modern standards across PHP, Node.js and React apps.",
@@ -334,12 +344,16 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "07/2023 — 03/2024",
         points: [
           {
-            en: "Led the full migration of production servers from Russia to Turkey with 40% less planned downtime.",
-            tr: "Canlı sunucuların Rusya'dan Türkiye'ye taşınmasını uçtan uca yürüttüm; planlı kesintiyi %40 azalttım.",
+            en: "Led the cross-region migration of 6 production servers from Russia to Turkey; a phased rollout with validation at every step kept 99.8% data integrity and cut planned downtime by 40%.",
+            tr: "6 canlı sunucunun Rusya'dan Türkiye'ye bölgeler arası taşınmasını yönettim; her adımda doğrulamalı, aşamalı geçişle %99,8 veri bütünlüğü korundu ve planlı kesinti %40 azaldı.",
           },
           {
-            en: "Automated backup and disaster recovery, streamlined pipelines and introduced proactive monitoring.",
-            tr: "Yedekleme ve felaket kurtarmayı otomatikleştirdim, pipeline'ları sadeleştirip proaktif izleme kurdum.",
+            en: "Built monitoring, alerting and CI/CD with Prometheus and Grafana — alert thresholds, on-call procedures and quality gates — and investigated and resolved the incidents they raised.",
+            tr: "Prometheus ve Grafana ile izleme, alarm ve CI/CD kurdum — alarm eşikleri, nöbet prosedürleri ve kalite kontrolleri — ve tetiklenen olayları inceleyip çözdüm.",
+          },
+          {
+            en: "Automated backup and disaster recovery and streamlined the delivery pipelines.",
+            tr: "Yedekleme ve felaket kurtarmayı otomatikleştirdim, teslimat pipeline'larını sadeleştirdim.",
           },
         ],
         metrics: [
@@ -353,12 +367,16 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "12/2021 — 07/2023",
         points: [
           {
-            en: "Designed and shipped client features and folded user feedback into product iterations.",
-            tr: "Müşteri ihtiyaçlarına göre özellikler tasarlayıp geliştirdim, kullanıcı geri bildirimlerini ürün döngüsüne kattım.",
+            en: "Refactored core application logic and optimised database queries: 32% faster responses and 25% less server load, lowering infrastructure costs.",
+            tr: "Çekirdek uygulama mantığını yeniden yapılandırıp veritabanı sorgularını optimize ettim: yanıtlar %32 hızlandı, sunucu yükü %25 azaldı ve altyapı maliyeti düştü.",
           },
           {
-            en: "Optimised code structure and queries for faster responses and lower server load.",
-            tr: "Daha hızlı yanıt ve daha düşük sunucu yükü için kod yapısını ve sorguları optimize ettim.",
+            en: "Served as Scrum Master for a team of 5–6 and mentored 2 interns end to end on an internal tool — from sprint ceremonies to code quality and the full development lifecycle.",
+            tr: "5–6 kişilik bir ekipte Scrum Master oldum; 2 stajyere bir iç araç projesinde uçtan uca mentorluk ettim — sprint seremonilerinden kod kalitesine ve tüm geliştirme döngüsüne kadar.",
+          },
+          {
+            en: "Designed and shipped client features and folded user feedback into product iterations.",
+            tr: "Müşteri ihtiyaçlarına göre özellikler tasarlayıp geliştirdim, kullanıcı geri bildirimlerini ürün döngüsüne kattım.",
           },
         ],
         metrics: [
@@ -377,8 +395,8 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "01/2021 — 12/2021",
         points: [
           {
-            en: "Helped build a real-time 3D web environment with React, Three.js and Node.js sockets.",
-            tr: "React, Three.js ve Node.js socket'leriyle gerçek zamanlı bir 3D web ortamının geliştirilmesinde yer aldım.",
+            en: "Built a real-time 3D virtual environment where medical professionals attend conferences and discuss presentations together on a shared big screen — React and Three.js on a WebSocket-based Node.js backend.",
+            tr: "Sağlık profesyonellerinin konferanslara katılıp sunumları ortak büyük bir ekranda birlikte tartıştığı gerçek zamanlı bir 3D sanal ortam geliştirdim — WebSocket tabanlı Node.js backend üzerinde React ve Three.js.",
           },
           {
             en: "Profiled and debugged JavaScript and React apps for better performance.",
@@ -397,7 +415,7 @@ export const toolbox: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "Web", tr: "Web" },
-    items: ["TypeScript", "React", "Next.js", "Angular", "Tailwind CSS"],
+    items: ["TypeScript", "React", "Next.js", "Angular", "Tailwind CSS", "Playwright", "Vitest"],
   },
   {
     group: { en: "Backend", tr: "Backend" },
@@ -405,15 +423,15 @@ export const toolbox: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "Data", tr: "Veri" },
-    items: ["PostgreSQL", "Prisma", "Redis", "MongoDB", "MySQL"],
+    items: ["PostgreSQL", "Prisma", "SQLAlchemy", "Redis", "BullMQ", "MongoDB", "MySQL"],
   },
   {
     group: { en: "Cloud & ops", tr: "Bulut & operasyon" },
-    items: ["AWS", "Hetzner", "Docker", "nginx", "GitHub Actions", "CI/CD"],
+    items: ["AWS", "Lambda", "SQS · SNS", "Glue · Athena", "Hetzner", "Docker", "nginx", "GitHub Actions", "Prometheus", "Grafana"],
   },
   {
     group: { en: "AI", tr: "Yapay zekâ" },
-    items: ["OpenAI", "Anthropic", "Cohere", "Model ensembles", "On-device OCR"],
+    items: ["Anthropic", "OpenAI", "Gemini", "MCP servers & agents", "Claude Skills", "Model ensembles", "n8n"],
   },
 ];
 

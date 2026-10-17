@@ -338,8 +338,9 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
   }
 }
 
-// A live app without an App Store listing ships on the web first.
-const statusText = (app: App) => (app.status === "live" && !app.appStoreUrl ? ui.status.web : ui.status[app.status]);
+// A live web-only app is not on the App Store.
+const statusText = (app: App) =>
+  app.status === "live" && app.platforms.every((platform) => platform === "Web") ? ui.status.web : ui.status[app.status];
 
 function RouteCard({ app, index, lang }: { app: App; index: number; lang: Lang }) {
   const rows = [
