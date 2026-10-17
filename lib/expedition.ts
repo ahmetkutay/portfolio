@@ -21,6 +21,7 @@ export const campById = (id: CampId) => camps.find((camp) => camp.id === id)!;
 
 /** Peaks on the hero map, in fractions of the map's width and height. */
 export const peaks: { slug: AppSlug; u: number; v: number; height: number; radius: number }[] = [
+  { slug: "moxakk", u: 0.33, v: 0.14, height: 0.66, radius: 0.12 },
   { slug: "dawnia", u: 0.5, v: 0.2, height: 0.62, radius: 0.12 },
   { slug: "onelior", u: 0.7, v: 0.32, height: 1, radius: 0.17 },
   { slug: "travelersbase", u: 0.9, v: 0.17, height: 0.5, radius: 0.1 },
@@ -51,8 +52,8 @@ export const ex = {
   routes: {
     title: { en: ["Routes", "opened."], tr: ["Açılan", "rotalar."] },
     intro: {
-      en: "Four products, each with its own terrain. Designed, built and operated end to end under Omnia Potentia.",
-      tr: "Her biri kendi arazisine sahip dört ürün. Omnia Potentia çatısı altında uçtan uca tasarlandı, geliştirildi ve işletiliyor.",
+      en: "Five products, each with its own terrain. Designed, built and operated end to end under Omnia Potentia.",
+      tr: "Her biri kendi arazisine sahip beş ürün. Omnia Potentia çatısı altında uçtan uca tasarlandı, geliştirildi ve işletiliyor.",
     },
     route: { en: "Route", tr: "Rota" },
     grade: { en: "Grade", tr: "Derece" },
@@ -60,7 +61,6 @@ export const ex = {
     category: { en: "Terrain", tr: "Arazi" },
     platforms: { en: "Platforms", tr: "Platformlar" },
     stack: { en: "Gear", tr: "Ekipman" },
-    unmarked: { en: "Unmarked route · internal", tr: "İşaretsiz rota · iç proje" },
   },
   ascent: {
     title: { en: ["The", "ascent."], tr: ["Tırmanış", "hikâyesi."] },
@@ -92,6 +92,5 @@ export const waypoints: { date: string; altitude: number; role: string; company:
   { date: "2021-12", altitude: 2500, role: "Software Engineer", company: "Orion Innovation", period: { en: "12/2021 — 07/2023", tr: "12/2021 — 07/2023" } },
   { date: "2023-07", altitude: 4100, role: "DevOps Engineer", company: "Orion Innovation", period: { en: "07/2023 — 03/2024", tr: "07/2023 — 03/2024" } },
   { date: "2024-03", altitude: 5300, role: "Mid-level Software Engineer", company: "Karnaval Media Group", period: { en: "03/2024 — 01/2025", tr: "03/2024 — 01/2025" } },
-  { date: "2025-03", altitude: 6700, role: "Cloud Engineer", company: "Accenture", period: { en: "03/2025 — 08/2025", tr: "03/2025 — 08/2025" } },
-  { date: "2025-08", altitude: 7700, role: "Senior Software Engineer", company: "Accenture", period: { en: "08/2025 — Present", tr: "08/2025 — Günümüz" } },
+  { date: "2025-03", altitude: 7200, role: "Senior Software Engineer", company: "Accenture", period: { en: "03/2025 — Present", tr: "03/2025 — Günümüz" } },
 ];

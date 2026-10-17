@@ -35,7 +35,6 @@ export const ui = {
   sections: {
     studio: { en: "The studio", tr: "Stüdyo" },
     work: { en: "Selected apps", tr: "Seçili uygulamalar" },
-    lab: { en: "From the lab", tr: "Laboratuvardan" },
     experience: { en: "Experience", tr: "Deneyim" },
     toolbox: { en: "Toolbox", tr: "Araç kutusu" },
     principles: { en: "How I work", tr: "Nasıl çalışırım" },
@@ -51,6 +50,7 @@ export const ui = {
   appStore: { en: "App Store", tr: "App Store" },
   status: {
     live: { en: "On the App Store", tr: "App Store'da" },
+    web: { en: "Live on the web", tr: "Web'de yayında" },
     soon: { en: "Coming soon", tr: "Yakında" },
     wip: { en: "In development", tr: "Geliştiriliyor" },
   },
@@ -63,7 +63,6 @@ export const ui = {
     role: { en: "Founder", tr: "Kurucu" },
     cta: { en: "Visit the studio", tr: "Stüdyoyu ziyaret et" },
   },
-  labTitle: { en: ["Not everything", "ships."], tr: ["Her şey", "yayınlanmaz."] },
   experienceTitle: { en: ["Nearly six years", "of shipping systems."], tr: ["Altı yıla yakın", "sistem teslimi."] },
   education: { en: "Education", tr: "Eğitim" },
   hobbies: { en: "Off the keyboard", tr: "Klavye dışında" },
@@ -85,22 +84,22 @@ export const now: { label: Text; detail: Text }[] = [
   },
   {
     label: { en: "Senior Software Engineer, Accenture", tr: "Senior Software Engineer, Accenture" },
-    detail: { en: "Cloud and web platforms", tr: "Bulut ve web platformları" },
+    detail: { en: "LLM document pipelines on MCP", tr: "MCP üzerinde LLM doküman pipeline'ları" },
   },
   {
-    label: { en: "Shipping Onelior 2.0", tr: "Onelior 2.0 yayında" },
-    detail: { en: "The Climb — every workout is altitude", tr: "Tırmanış — her antrenman bir irtifa" },
+    label: { en: "Four apps live", tr: "Dört uygulama yayında" },
+    detail: { en: "Onelior, Cevixa, Dawnia on the App Store · Moxakk on the web", tr: "Onelior, Cevixa, Dawnia App Store'da · Moxakk web'de" },
   },
 ];
 
 export const stats: { value: string; label: Text }[] = [
   { value: "5+", label: { en: "years shipping to production", tr: "yıl canlıya teslim" } },
-  { value: "4", label: { en: "studio apps", tr: "stüdyo uygulaması" } },
+  { value: "5", label: { en: "studio apps", tr: "stüdyo uygulaması" } },
   { value: "3", label: { en: "platforms — iOS, Android, web", tr: "platform — iOS, Android, web" } },
 ];
 
 export type AppStatus = "live" | "soon" | "wip";
-export type AppSlug = "onelior" | "cevixa" | "dawnia" | "travelersbase";
+export type AppSlug = "onelior" | "moxakk" | "cevixa" | "dawnia" | "travelersbase";
 
 export type App = {
   slug: AppSlug;
@@ -149,6 +148,35 @@ export const apps: App[] = [
     appStoreUrl: "https://apps.apple.com/app/onelior/id6789689297",
   },
   {
+    slug: "moxakk",
+    name: "Moxakk",
+    icon: "/apps/moxakk/icon.svg",
+    category: { en: "Sports · AI", tr: "Spor · Yapay zekâ" },
+    tagline: { en: "Read the game before kick-off.", tr: "Maçı başlama düdüğünden önce oku." },
+    summary: {
+      en: "Three AI models — Claude, OpenAI and Gemini — read every football match from licensed data: form, lineups, team news and the market. You get one clear answer: what's likely, why, and how sure we are. Every read is scored against the result.",
+      tr: "Üç yapay zekâ modeli — Claude, OpenAI ve Gemini — her futbol maçını lisanslı veriden okur: form, kadrolar, takım haberleri ve piyasa. Sonuçta tek bir net cevap: ne olası, neden ve ne kadar eminiz. Her tahmin maç sonucuyla puanlanır.",
+    },
+    built: [
+      {
+        en: "Express, Prisma and PostgreSQL API that gathers licensed API-Football and odds data in parallel behind a quota-aware, two-layer cache.",
+        tr: "Lisanslı API-Football ve oran verisini, kota farkındalıklı iki katmanlı bir önbellek arkasında paralel toplayan Express, Prisma ve PostgreSQL API'si.",
+      },
+      {
+        en: "Three-model ensemble on BullMQ workers: each model's output is schema-validated, reconciled into one read and compared with the market.",
+        tr: "BullMQ worker'ları üzerinde üç modelli topluluk: her modelin çıktısı şema ile doğrulanır, tek bir okumada birleştirilir ve piyasayla karşılaştırılır.",
+      },
+      {
+        en: "Next.js 16 web app with lineup refreshes, shareable analyses and a public track record, tested with Playwright and axe for WCAG 2.1 AA.",
+        tr: "Kadro yenileme, paylaşılabilir analizler ve herkese açık başarı geçmişi olan Next.js 16 web uygulaması; Playwright ve axe ile WCAG 2.1 AA testleri.",
+      },
+    ],
+    stack: ["Next.js", "React", "Express", "Prisma", "PostgreSQL", "Redis", "BullMQ", "Claude", "OpenAI", "Gemini"],
+    platforms: ["Web"],
+    status: "live",
+    url: "https://moxakk.com",
+  },
+  {
     slug: "cevixa",
     name: "Cevixa",
     icon: "/apps/cevixa/icon.svg",
@@ -174,8 +202,9 @@ export const apps: App[] = [
     ],
     stack: ["SwiftUI", "Kotlin", "Jetpack Compose", "FastAPI", "PostgreSQL", "OpenAPI"],
     platforms: ["iOS", "Android"],
-    status: "soon",
+    status: "live",
     url: "https://appcevixa.com",
+    appStoreUrl: "https://apps.apple.com/app/cevixa-expense-tracker/id6818992503",
   },
   {
     slug: "dawnia",
@@ -203,8 +232,9 @@ export const apps: App[] = [
     ],
     stack: ["SwiftUI", "SwiftData", "WidgetKit", "ActivityKit", "App Intents"],
     platforms: ["iOS"],
-    status: "soon",
+    status: "live",
     url: "https://appdawnia.com",
+    appStoreUrl: "https://apps.apple.com/app/dawnia/id6819712758",
   },
   {
     slug: "travelersbase",
@@ -231,15 +261,6 @@ export const apps: App[] = [
   },
 ];
 
-export const lab = {
-  name: "Moxakk Analyzer",
-  summary: {
-    en: "A research tool for football and basketball match analysis. A three-model AI ensemble (OpenAI, Anthropic, Cohere) turns multi-source match data into structured reports — with a native iOS app, a web app and an accuracy dashboard. Kept as an internal project.",
-    tr: "Futbol ve basketbol maç analizi için bir araştırma aracı. Üç modelli bir AI topluluğu (OpenAI, Anthropic, Cohere) çok kaynaklı maç verisini yapılandırılmış raporlara dönüştürür — native iOS uygulaması, web uygulaması ve isabet panosuyla. İç proje olarak sürdürülüyor.",
-  } satisfies Text,
-  tags: ["Multi-model AI", "Data pipelines", "SwiftUI", "Next.js", "Docker · ARM64"],
-};
-
 export type Role = {
   title: string;
   period: string;
@@ -254,30 +275,36 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
     roles: [
       {
         title: "Senior Software Engineer",
-        period: "08/2025 — Present",
+        period: "03/2025 — Present",
         points: [
           {
-            en: "Work with UX/UI designers to turn designs into polished, production interfaces.",
-            tr: "UX/UI tasarımcılarıyla birlikte tasarımları canlıya hazır, özenli arayüzlere dönüştürüyorum.",
+            en: "Consulting across three client engagements — an AI document generation platform for a global pharmaceutical client, an AWS data platform and an enterprise component library for a healthcare B2B client — with the role shifting to what each project needs.",
+            tr: "Danışmanlık tarafında üç müşteri projesinde çalışıyorum — global bir ilaç müşterisi için yapay zekâ ile doküman üretim platformu, bir AWS veri platformu ve sağlık sektöründe B2B bir müşteri için kurumsal bileşen kütüphanesi; rolüm her projenin ihtiyacına göre şekillendi.",
           },
           {
-            en: "Mentor junior developers and run code reviews to keep quality and standards high.",
-            tr: "Junior geliştiricilere mentorluk yapıyor, kod review'larla kaliteyi ve standartları yüksek tutuyorum.",
+            en: "Now — AI document generation for a global pharmaceutical client: extending a Python MCP server with new rules and capabilities that power LLM pipelines — client guidelines and annotations become structured prompts, documents are generated from templates and reference files, then validated against the source requirements, with Claude Skills and MCP-based agents.",
+            tr: "Şu an — global bir ilaç müşterisi için yapay zekâ ile doküman üretimi: Python ile yazılmış bir MCP sunucusunu, LLM pipeline'larını besleyen yeni kurallar ve yeteneklerle genişletiyorum — müşteri yönergeleri ve notları yapılandırılmış prompt'lara dönüşüyor, dokümanlar şablon ve referans dosyalardan üretiliyor ve kaynak gereksinimlere göre doğrulanıyor; Claude Skills ve MCP tabanlı agent'larla.",
+          },
+          {
+            en: "Enterprise component library for a healthcare B2B client: architected the performance testing strategy with user-flow tests for 45+ components in Lighthouse, Vitest and Playwright, and contributed 7 production components within the design system.",
+            tr: "Sağlık sektöründe B2B bir müşterinin kurumsal bileşen kütüphanesi: performans test stratejisini kurdum; Lighthouse, Vitest ve Playwright ile 45+ bileşen için kullanıcı akışı bazlı testler yazdım ve tasarım sistemine 7 canlı bileşen kattım.",
+          },
+          {
+            en: "AWS data platform: built the backend of a full-stack data platform on Node.js and AWS — serverless REST APIs on Lambda and API Gateway, an event-driven messaging layer on SNS and SQS, and Spark ETL pipelines in AWS Glue feeding Athena for SQL over managed tables.",
+            tr: "AWS veri platformu: Node.js ve AWS üzerinde full-stack bir veri platformunun backend'ini geliştirdim — Lambda ve API Gateway ile serverless REST API'ler, SNS ve SQS ile olay güdümlü mesajlaşma katmanı ve yönetilen tablolar üzerinde SQL için Athena'yı besleyen AWS Glue Spark ETL pipeline'ları.",
+          },
+          {
+            en: "Managed IAM-based access control, used CloudWatch for monitoring and incident investigation, set up Grafana dashboards and delivered the Angular frontend that surfaces the data.",
+            tr: "IAM tabanlı erişim kontrolünü yönettim, izleme ve olay incelemesi için CloudWatch kullandım, Grafana panoları kurdum ve veriyi gösteren Angular arayüzünü teslim ettim.",
+          },
+          {
+            en: "Run code reviews and mentor teammates on backend architecture, cloud services and testing.",
+            tr: "Kod review'ları yapıyor; ekip arkadaşlarıma backend mimarisi, bulut servisleri ve test yöntemleri konusunda mentorluk ediyorum.",
           },
         ],
-      },
-      {
-        title: "Cloud Engineer",
-        period: "03/2025 — 08/2025",
-        points: [
-          {
-            en: "Architected and deployed AWS services with Node.js and Angular, improving scalability and cutting latency across distributed systems.",
-            tr: "Node.js ve Angular ile AWS servisleri tasarlayıp yayına aldım; dağıtık sistemlerde ölçeklenebilirliği artırıp gecikmeyi düşürdüm.",
-          },
-          {
-            en: "Championed DevOps practices and evaluated new cloud technologies for the platform roadmap.",
-            tr: "DevOps pratiklerini yaygınlaştırdım ve platform yol haritası için yeni bulut teknolojilerini değerlendirdim.",
-          },
+        metrics: [
+          { en: "45+ components perf-tested", tr: "45+ bileşen performans testi" },
+          { en: "7 production components", tr: "7 canlı bileşen" },
         ],
       },
     ],
@@ -291,8 +318,8 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "03/2024 — 01/2025",
         points: [
           {
-            en: "Optimised and refactored the frontend for faster content delivery and better engagement.",
-            tr: "Daha hızlı içerik sunumu ve daha iyi etkileşim için frontend'i optimize edip yeniden yapılandırdım.",
+            en: "Refactored critical rendering paths and trimmed bundle size in React and Next.js apps, cutting page load by 40% and lifting content engagement across the platform.",
+            tr: "React ve Next.js uygulamalarında kritik render yollarını yeniden yapılandırıp bundle boyutunu küçülttüm; sayfa yüklemeyi %40 kısaltıp platform genelinde içerik etkileşimini artırdım.",
           },
           {
             en: "Established reusable component libraries and modern standards across PHP, Node.js and React apps.",
@@ -315,12 +342,16 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "07/2023 — 03/2024",
         points: [
           {
-            en: "Led the full migration of production servers from Russia to Turkey with 40% less planned downtime.",
-            tr: "Canlı sunucuların Rusya'dan Türkiye'ye taşınmasını uçtan uca yürüttüm; planlı kesintiyi %40 azalttım.",
+            en: "Led the cross-region migration of 6 production servers from Russia to Turkey; a phased rollout with validation at every step kept 99.8% data integrity and cut planned downtime by 40%.",
+            tr: "6 canlı sunucunun Rusya'dan Türkiye'ye bölgeler arası taşınmasını yönettim; her adımda doğrulamalı, aşamalı geçişle %99,8 veri bütünlüğü korundu ve planlı kesinti %40 azaldı.",
           },
           {
-            en: "Automated backup and disaster recovery, streamlined pipelines and introduced proactive monitoring.",
-            tr: "Yedekleme ve felaket kurtarmayı otomatikleştirdim, pipeline'ları sadeleştirip proaktif izleme kurdum.",
+            en: "Built monitoring, alerting and CI/CD with Prometheus and Grafana — alert thresholds, on-call procedures and quality gates — and investigated and resolved the incidents they raised.",
+            tr: "Prometheus ve Grafana ile izleme, alarm ve CI/CD kurdum — alarm eşikleri, nöbet prosedürleri ve kalite kontrolleri — ve tetiklenen olayları inceleyip çözdüm.",
+          },
+          {
+            en: "Automated backup and disaster recovery and streamlined the delivery pipelines.",
+            tr: "Yedekleme ve felaket kurtarmayı otomatikleştirdim, teslimat pipeline'larını sadeleştirdim.",
           },
         ],
         metrics: [
@@ -334,12 +365,16 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "12/2021 — 07/2023",
         points: [
           {
-            en: "Designed and shipped client features and folded user feedback into product iterations.",
-            tr: "Müşteri ihtiyaçlarına göre özellikler tasarlayıp geliştirdim, kullanıcı geri bildirimlerini ürün döngüsüne kattım.",
+            en: "Refactored core application logic and optimised database queries: 32% faster responses and 25% less server load, lowering infrastructure costs.",
+            tr: "Çekirdek uygulama mantığını yeniden yapılandırıp veritabanı sorgularını optimize ettim: yanıtlar %32 hızlandı, sunucu yükü %25 azaldı ve altyapı maliyeti düştü.",
           },
           {
-            en: "Optimised code structure and queries for faster responses and lower server load.",
-            tr: "Daha hızlı yanıt ve daha düşük sunucu yükü için kod yapısını ve sorguları optimize ettim.",
+            en: "Served as Scrum Master for a team of 5–6 and mentored 2 interns end to end on an internal tool — from sprint ceremonies to code quality and the full development lifecycle.",
+            tr: "5–6 kişilik bir ekipte Scrum Master oldum; 2 stajyere bir iç araç projesinde uçtan uca mentorluk ettim — sprint seremonilerinden kod kalitesine ve tüm geliştirme döngüsüne kadar.",
+          },
+          {
+            en: "Designed and shipped client features and folded user feedback into product iterations.",
+            tr: "Müşteri ihtiyaçlarına göre özellikler tasarlayıp geliştirdim, kullanıcı geri bildirimlerini ürün döngüsüne kattım.",
           },
         ],
         metrics: [
@@ -358,8 +393,8 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         period: "01/2021 — 12/2021",
         points: [
           {
-            en: "Helped build a real-time 3D web environment with React, Three.js and Node.js sockets.",
-            tr: "React, Three.js ve Node.js socket'leriyle gerçek zamanlı bir 3D web ortamının geliştirilmesinde yer aldım.",
+            en: "Built a real-time 3D virtual environment where medical professionals attend conferences and discuss presentations together on a shared big screen — React and Three.js on a WebSocket-based Node.js backend.",
+            tr: "Sağlık profesyonellerinin konferanslara katılıp sunumları ortak büyük bir ekranda birlikte tartıştığı gerçek zamanlı bir 3D sanal ortam geliştirdim — WebSocket tabanlı Node.js backend üzerinde React ve Three.js.",
           },
           {
             en: "Profiled and debugged JavaScript and React apps for better performance.",
@@ -378,7 +413,7 @@ export const toolbox: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "Web", tr: "Web" },
-    items: ["TypeScript", "React", "Next.js", "Angular", "Tailwind CSS"],
+    items: ["TypeScript", "React", "Next.js", "Angular", "Tailwind CSS", "Playwright", "Vitest"],
   },
   {
     group: { en: "Backend", tr: "Backend" },
@@ -386,15 +421,15 @@ export const toolbox: { group: Text; items: string[] }[] = [
   },
   {
     group: { en: "Data", tr: "Veri" },
-    items: ["PostgreSQL", "Prisma", "Redis", "MongoDB", "MySQL"],
+    items: ["PostgreSQL", "Prisma", "SQLAlchemy", "Redis", "BullMQ", "MongoDB", "MySQL"],
   },
   {
     group: { en: "Cloud & ops", tr: "Bulut & operasyon" },
-    items: ["AWS", "Hetzner", "Docker", "nginx", "GitHub Actions", "CI/CD"],
+    items: ["AWS", "Lambda", "SQS · SNS", "Glue · Athena", "Hetzner", "Docker", "nginx", "GitHub Actions", "Prometheus", "Grafana"],
   },
   {
     group: { en: "AI", tr: "Yapay zekâ" },
-    items: ["OpenAI", "Anthropic", "Cohere", "Model ensembles", "On-device OCR"],
+    items: ["Anthropic", "OpenAI", "Gemini", "MCP servers & agents", "Claude Skills", "Model ensembles", "n8n"],
   },
 ];
 

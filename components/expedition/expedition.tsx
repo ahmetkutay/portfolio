@@ -7,7 +7,6 @@ import {
   education,
   experience,
   hobbies,
-  lab,
   links,
   now,
   principles,
@@ -244,6 +243,8 @@ function Studio({ lang }: { lang: Lang }) {
 const panelStyle: Record<App["slug"], string> = {
   onelior:
     "bg-[repeating-radial-gradient(circle_at_72%_22%,transparent_0_26px,rgba(255,255,255,0.28)_26px_27px),linear-gradient(165deg,#fcd9bc_0%,#e6c0c4_45%,#9a82c2_100%)]",
+  moxakk:
+    "bg-[repeating-radial-gradient(circle_at_25%_30%,transparent_0_26px,rgba(110,139,255,0.14)_26px_27px),linear-gradient(160deg,#171a2e_0%,#0b0c10_75%)]",
   cevixa:
     "bg-[repeating-radial-gradient(circle_at_30%_70%,transparent_0_26px,rgba(203,220,78,0.16)_26px_27px),#192020]",
   dawnia:
@@ -259,6 +260,12 @@ function Phone({ src, alt, className }: { src: string; alt: string; className?: 
     </div>
   );
 }
+
+const moxakkModels = [
+  { name: "Claude", pct: 50 },
+  { name: "OpenAI", pct: 45 },
+  { name: "Gemini", pct: 49 },
+];
 
 const lift = "transition duration-700 ease-[cubic-bezier(0.2,0.7,0.1,1)] group-hover:-translate-y-3";
 
@@ -276,6 +283,28 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
         <>
           <Phone src="/apps/dawnia/today.jpg" alt="Dawnia Today screen" className={cn("absolute left-[14%] top-[16%] w-[33%] -rotate-[5deg] max-lg:top-[12%]", lift)} />
           <Phone src="/apps/dawnia/habits.jpg" alt="Dawnia Habits screen" className={cn("absolute right-[13%] top-[26%] w-[31%] rotate-[6deg] delay-75 max-lg:top-[22%]", lift)} />
+        </>
+      );
+    case "moxakk":
+      return (
+        <>
+          <div className={cn("absolute left-[9%] top-[14%] w-[112%] -rotate-[4deg] overflow-hidden rounded-xl bg-[#0b0c10] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10", lift)}>
+            <Image src="/apps/moxakk/match.jpg" alt="Moxakk match analysis: an Arsenal win at 48 percent, most likely 2–1" width={1600} height={765} sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full" />
+          </div>
+          <div className="absolute bottom-[8%] left-[8%] w-[62%] max-w-72 bg-[#111216]/90 p-4 text-white ring-1 ring-white/15">
+            <Mono className="text-white/55">{lang === "tr" ? "Üç model · tek okuma" : "Three models · one read"}</Mono>
+            <div className="mt-3 space-y-2">
+              {moxakkModels.map(({ name, pct }) => (
+                <div key={name} className="flex items-center gap-3 text-xs">
+                  <span lang="en" className="w-12 text-white/75">{name}</span>
+                  <span className="h-1.5 flex-1 bg-white/10">
+                    <span className="block h-full bg-[linear-gradient(90deg,#6E8BFF,#2DD4BF)]" style={{ width: `${pct * 1.6}%` }} />
+                  </span>
+                  <span className="w-8 text-right tabular-nums">{pct}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
         </>
       );
     case "cevixa":
@@ -309,11 +338,15 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
   }
 }
 
+// A live web-only app is not on the App Store.
+const statusText = (app: App) =>
+  app.status === "live" && app.platforms.every((platform) => platform === "Web") ? ui.status.web : ui.status[app.status];
+
 function RouteCard({ app, index, lang }: { app: App; index: number; lang: Lang }) {
   const rows = [
     { label: ex.routes.category[lang], value: app.category[lang] },
     { label: ex.routes.platforms[lang], value: <span lang="en">{app.platforms.join(" · ")}</span> },
-    { label: ex.routes.grade[lang], value: ui.status[app.status][lang] },
+    { label: ex.routes.grade[lang], value: statusText(app)[lang] },
   ];
   return (
     <article id={`route-${app.slug}`} data-reveal className="group relative scroll-mt-20 border border-line bg-night-2">
@@ -324,7 +357,7 @@ function RouteCard({ app, index, lang }: { app: App; index: number; lang: Lang }
         </Mono>
         <Mono className="flex items-center gap-2">
           <span className={cn("h-2 w-2 rotate-45", app.status === "live" ? "bg-[#7bd88f]" : app.status === "soon" ? "bg-[#f2c14e]" : "bg-bone/40")} />
-          {ui.status[app.status][lang]}
+          {statusText(app)[lang]}
         </Mono>
       </div>
 
@@ -411,18 +444,6 @@ function Routes({ lang }: { lang: Lang }) {
         ))}
       </div>
 
-      <div data-reveal className="mt-14 grid gap-6 border border-dashed border-bone/25 p-6 sm:p-10 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <Mono className="text-bone/45">{ex.routes.unmarked[lang]}</Mono>
-          <p lang="en" className="font-wide mt-4 text-3xl font-extrabold uppercase">
-            {lab.name}
-          </p>
-        </div>
-        <div className="lg:col-span-7">
-          <p className="leading-relaxed text-bone/65">{lab.summary[lang]}</p>
-          <p className="mt-4 font-mono text-xs text-bone/45">{lab.tags.join(" / ")}</p>
-        </div>
-      </div>
     </section>
   );
 }
