@@ -35,7 +35,6 @@ export const ui = {
   sections: {
     studio: { en: "The studio", tr: "Stüdyo" },
     work: { en: "Selected apps", tr: "Seçili uygulamalar" },
-    lab: { en: "From the lab", tr: "Laboratuvardan" },
     experience: { en: "Experience", tr: "Deneyim" },
     toolbox: { en: "Toolbox", tr: "Araç kutusu" },
     principles: { en: "How I work", tr: "Nasıl çalışırım" },
@@ -51,6 +50,7 @@ export const ui = {
   appStore: { en: "App Store", tr: "App Store" },
   status: {
     live: { en: "On the App Store", tr: "App Store'da" },
+    web: { en: "Live on the web", tr: "Web'de yayında" },
     soon: { en: "Coming soon", tr: "Yakında" },
     wip: { en: "In development", tr: "Geliştiriliyor" },
   },
@@ -63,7 +63,6 @@ export const ui = {
     role: { en: "Founder", tr: "Kurucu" },
     cta: { en: "Visit the studio", tr: "Stüdyoyu ziyaret et" },
   },
-  labTitle: { en: ["Not everything", "ships."], tr: ["Her şey", "yayınlanmaz."] },
   experienceTitle: { en: ["Nearly six years", "of shipping systems."], tr: ["Altı yıla yakın", "sistem teslimi."] },
   education: { en: "Education", tr: "Eğitim" },
   hobbies: { en: "Off the keyboard", tr: "Klavye dışında" },
@@ -95,12 +94,12 @@ export const now: { label: Text; detail: Text }[] = [
 
 export const stats: { value: string; label: Text }[] = [
   { value: "5+", label: { en: "years shipping to production", tr: "yıl canlıya teslim" } },
-  { value: "4", label: { en: "studio apps", tr: "stüdyo uygulaması" } },
+  { value: "5", label: { en: "studio apps", tr: "stüdyo uygulaması" } },
   { value: "3", label: { en: "platforms — iOS, Android, web", tr: "platform — iOS, Android, web" } },
 ];
 
 export type AppStatus = "live" | "soon" | "wip";
-export type AppSlug = "onelior" | "cevixa" | "dawnia" | "travelersbase";
+export type AppSlug = "onelior" | "moxakk" | "cevixa" | "dawnia" | "travelersbase";
 
 export type App = {
   slug: AppSlug;
@@ -147,6 +146,35 @@ export const apps: App[] = [
     status: "live",
     url: "https://onelior.com",
     appStoreUrl: "https://apps.apple.com/app/onelior/id6789689297",
+  },
+  {
+    slug: "moxakk",
+    name: "Moxakk",
+    icon: "/apps/moxakk/icon.svg",
+    category: { en: "Sports · AI", tr: "Spor · Yapay zekâ" },
+    tagline: { en: "Read the game before kick-off.", tr: "Maçı başlama düdüğünden önce oku." },
+    summary: {
+      en: "Three AI models — Claude, OpenAI and Gemini — read every football match from licensed data: form, lineups, team news and the market. You get one clear answer: what's likely, why, and how sure we are. Every read is scored against the result.",
+      tr: "Üç yapay zekâ modeli — Claude, OpenAI ve Gemini — her futbol maçını lisanslı veriden okur: form, kadrolar, takım haberleri ve piyasa. Sonuçta tek bir net cevap: ne olası, neden ve ne kadar eminiz. Her tahmin maç sonucuyla puanlanır.",
+    },
+    built: [
+      {
+        en: "Express, Prisma and PostgreSQL API that gathers licensed API-Football and odds data in parallel behind a quota-aware, two-layer cache.",
+        tr: "Lisanslı API-Football ve oran verisini, kota farkındalıklı iki katmanlı bir önbellek arkasında paralel toplayan Express, Prisma ve PostgreSQL API'si.",
+      },
+      {
+        en: "Three-model ensemble on BullMQ workers: each model's output is schema-validated, reconciled into one read and compared with the market.",
+        tr: "BullMQ worker'ları üzerinde üç modelli topluluk: her modelin çıktısı şema ile doğrulanır, tek bir okumada birleştirilir ve piyasayla karşılaştırılır.",
+      },
+      {
+        en: "Next.js 16 web app with lineup refreshes, shareable analyses and a public track record, tested with Playwright and axe for WCAG 2.1 AA.",
+        tr: "Kadro yenileme, paylaşılabilir analizler ve herkese açık başarı geçmişi olan Next.js 16 web uygulaması; Playwright ve axe ile WCAG 2.1 AA testleri.",
+      },
+    ],
+    stack: ["Next.js", "React", "Express", "Prisma", "PostgreSQL", "Redis", "BullMQ", "Claude", "OpenAI", "Gemini"],
+    platforms: ["Web"],
+    status: "live",
+    url: "https://moxakk.com",
   },
   {
     slug: "cevixa",
@@ -230,15 +258,6 @@ export const apps: App[] = [
     status: "wip",
   },
 ];
-
-export const lab = {
-  name: "Moxakk Analyzer",
-  summary: {
-    en: "A research tool for football and basketball match analysis. A three-model AI ensemble (OpenAI, Anthropic, Cohere) turns multi-source match data into structured reports — with a native iOS app, a web app and an accuracy dashboard. Kept as an internal project.",
-    tr: "Futbol ve basketbol maç analizi için bir araştırma aracı. Üç modelli bir AI topluluğu (OpenAI, Anthropic, Cohere) çok kaynaklı maç verisini yapılandırılmış raporlara dönüştürür — native iOS uygulaması, web uygulaması ve isabet panosuyla. İç proje olarak sürdürülüyor.",
-  } satisfies Text,
-  tags: ["Multi-model AI", "Data pipelines", "SwiftUI", "Next.js", "Docker · ARM64"],
-};
 
 export type Role = {
   title: string;

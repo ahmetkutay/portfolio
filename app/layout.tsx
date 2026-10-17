@@ -15,7 +15,7 @@ const plexMono = IBM_Plex_Mono({
 });
 
 const description =
-  "Software engineer and founder of Omnia Potentia. I design, build and run native iOS and Android apps — Onelior, Cevixa, Dawnia — and the systems behind them.";
+  "Software engineer and founder of Omnia Potentia. I design, build and run iOS, Android and web apps — Onelior, Moxakk, Cevixa, Dawnia — and the systems behind them.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kutaykaracair.com"),

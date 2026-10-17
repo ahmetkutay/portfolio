@@ -21,6 +21,7 @@ export const campById = (id: CampId) => camps.find((camp) => camp.id === id)!;
 
 /** Peaks on the hero map, in fractions of the map's width and height. */
 export const peaks: { slug: AppSlug; u: number; v: number; height: number; radius: number }[] = [
+  { slug: "moxakk", u: 0.33, v: 0.14, height: 0.66, radius: 0.12 },
   { slug: "dawnia", u: 0.5, v: 0.2, height: 0.62, radius: 0.12 },
   { slug: "onelior", u: 0.7, v: 0.32, height: 1, radius: 0.17 },
   { slug: "travelersbase", u: 0.9, v: 0.17, height: 0.5, radius: 0.1 },
@@ -51,8 +52,8 @@ export const ex = {
   routes: {
     title: { en: ["Routes", "opened."], tr: ["Açılan", "rotalar."] },
     intro: {
-      en: "Four products, each with its own terrain. Designed, built and operated end to end under Omnia Potentia.",
-      tr: "Her biri kendi arazisine sahip dört ürün. Omnia Potentia çatısı altında uçtan uca tasarlandı, geliştirildi ve işletiliyor.",
+      en: "Five products, each with its own terrain. Designed, built and operated end to end under Omnia Potentia.",
+      tr: "Her biri kendi arazisine sahip beş ürün. Omnia Potentia çatısı altında uçtan uca tasarlandı, geliştirildi ve işletiliyor.",
     },
     route: { en: "Route", tr: "Rota" },
     grade: { en: "Grade", tr: "Derece" },
@@ -60,7 +61,6 @@ export const ex = {
     category: { en: "Terrain", tr: "Arazi" },
     platforms: { en: "Platforms", tr: "Platformlar" },
     stack: { en: "Gear", tr: "Ekipman" },
-    unmarked: { en: "Unmarked route · internal", tr: "İşaretsiz rota · iç proje" },
   },
   ascent: {
     title: { en: ["The", "ascent."], tr: ["Tırmanış", "hikâyesi."] },
