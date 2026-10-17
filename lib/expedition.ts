@@ -92,6 +92,5 @@ export const waypoints: { date: string; altitude: number; role: string; company:
   { date: "2021-12", altitude: 2500, role: "Software Engineer", company: "Orion Innovation", period: { en: "12/2021 — 07/2023", tr: "12/2021 — 07/2023" } },
   { date: "2023-07", altitude: 4100, role: "DevOps Engineer", company: "Orion Innovation", period: { en: "07/2023 — 03/2024", tr: "07/2023 — 03/2024" } },
   { date: "2024-03", altitude: 5300, role: "Mid-level Software Engineer", company: "Karnaval Media Group", period: { en: "03/2024 — 01/2025", tr: "03/2024 — 01/2025" } },
-  { date: "2025-03", altitude: 6700, role: "Cloud Engineer", company: "Accenture", period: { en: "03/2025 — 08/2025", tr: "03/2025 — 08/2025" } },
-  { date: "2025-08", altitude: 7700, role: "Senior Software Engineer", company: "Accenture", period: { en: "08/2025 — Present", tr: "08/2025 — Günümüz" } },
+  { date: "2025-03", altitude: 7200, role: "Senior Software Engineer", company: "Accenture", period: { en: "03/2025 — Present", tr: "03/2025 — Günümüz" } },
 ];

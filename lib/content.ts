@@ -275,15 +275,27 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
     roles: [
       {
         title: "Senior Software Engineer",
-        period: "08/2025 — Present",
+        period: "03/2025 — Present",
         points: [
           {
-            en: "AI document generation for a global pharmaceutical client: extending a Python MCP server with new rules and capabilities that power LLM pipelines — client guidelines and annotations become structured prompts, documents are generated from templates and reference files, then validated against the source requirements, with Claude Skills and MCP-based agents.",
-            tr: "Global bir ilaç müşterisi için yapay zekâ ile doküman üretimi: Python ile yazılmış bir MCP sunucusunu, LLM pipeline'larını besleyen yeni kurallar ve yeteneklerle genişletiyorum — müşteri yönergeleri ve notları yapılandırılmış prompt'lara dönüşüyor, dokümanlar şablon ve referans dosyalardan üretiliyor ve kaynak gereksinimlere göre doğrulanıyor; Claude Skills ve MCP tabanlı agent'larla.",
+            en: "Consulting across three client engagements — an AI document generation platform for a global pharmaceutical client, an AWS data platform and an enterprise component library for a healthcare B2B client — with the role shifting to what each project needs.",
+            tr: "Danışmanlık tarafında üç müşteri projesinde çalışıyorum — global bir ilaç müşterisi için yapay zekâ ile doküman üretim platformu, bir AWS veri platformu ve sağlık sektöründe B2B bir müşteri için kurumsal bileşen kütüphanesi; rolüm her projenin ihtiyacına göre şekillendi.",
+          },
+          {
+            en: "Now — AI document generation for a global pharmaceutical client: extending a Python MCP server with new rules and capabilities that power LLM pipelines — client guidelines and annotations become structured prompts, documents are generated from templates and reference files, then validated against the source requirements, with Claude Skills and MCP-based agents.",
+            tr: "Şu an — global bir ilaç müşterisi için yapay zekâ ile doküman üretimi: Python ile yazılmış bir MCP sunucusunu, LLM pipeline'larını besleyen yeni kurallar ve yeteneklerle genişletiyorum — müşteri yönergeleri ve notları yapılandırılmış prompt'lara dönüşüyor, dokümanlar şablon ve referans dosyalardan üretiliyor ve kaynak gereksinimlere göre doğrulanıyor; Claude Skills ve MCP tabanlı agent'larla.",
           },
           {
             en: "Enterprise component library for a healthcare B2B client: architected the performance testing strategy with user-flow tests for 45+ components in Lighthouse, Vitest and Playwright, and contributed 7 production components within the design system.",
             tr: "Sağlık sektöründe B2B bir müşterinin kurumsal bileşen kütüphanesi: performans test stratejisini kurdum; Lighthouse, Vitest ve Playwright ile 45+ bileşen için kullanıcı akışı bazlı testler yazdım ve tasarım sistemine 7 canlı bileşen kattım.",
+          },
+          {
+            en: "AWS data platform: built the backend of a full-stack data platform on Node.js and AWS — serverless REST APIs on Lambda and API Gateway, an event-driven messaging layer on SNS and SQS, and Spark ETL pipelines in AWS Glue feeding Athena for SQL over managed tables.",
+            tr: "AWS veri platformu: Node.js ve AWS üzerinde full-stack bir veri platformunun backend'ini geliştirdim — Lambda ve API Gateway ile serverless REST API'ler, SNS ve SQS ile olay güdümlü mesajlaşma katmanı ve yönetilen tablolar üzerinde SQL için Athena'yı besleyen AWS Glue Spark ETL pipeline'ları.",
+          },
+          {
+            en: "Managed IAM-based access control, used CloudWatch for monitoring and incident investigation, set up Grafana dashboards and delivered the Angular frontend that surfaces the data.",
+            tr: "IAM tabanlı erişim kontrolünü yönettim, izleme ve olay incelemesi için CloudWatch kullandım, Grafana panoları kurdum ve veriyi gösteren Angular arayüzünü teslim ettim.",
           },
           {
             en: "Run code reviews and mentor teammates on backend architecture, cloud services and testing.",
@@ -293,20 +305,6 @@ export const experience: { company: string; location: Text; roles: Role[] }[] = 
         metrics: [
           { en: "45+ components perf-tested", tr: "45+ bileşen performans testi" },
           { en: "7 production components", tr: "7 canlı bileşen" },
-        ],
-      },
-      {
-        title: "Cloud Engineer",
-        period: "03/2025 — 08/2025",
-        points: [
-          {
-            en: "Built the backend of a full-stack data platform on Node.js and AWS: serverless REST APIs on Lambda and API Gateway, an event-driven messaging layer on SNS and SQS, and Spark ETL pipelines in AWS Glue feeding Athena for SQL over managed tables.",
-            tr: "Node.js ve AWS üzerinde full-stack bir veri platformunun backend'ini geliştirdim: Lambda ve API Gateway ile serverless REST API'ler, SNS ve SQS ile olay güdümlü mesajlaşma katmanı ve yönetilen tablolar üzerinde SQL için Athena'yı besleyen AWS Glue Spark ETL pipeline'ları.",
-          },
-          {
-            en: "Managed IAM-based access control, used CloudWatch for monitoring and incident investigation, set up Grafana dashboards and delivered the Angular frontend that surfaces the data.",
-            tr: "IAM tabanlı erişim kontrolünü yönettim, izleme ve olay incelemesi için CloudWatch kullandım, Grafana panoları kurdum ve veriyi gösteren Angular arayüzünü teslim ettim.",
-          },
         ],
       },
     ],
