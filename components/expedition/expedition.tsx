@@ -186,7 +186,7 @@ function Studio({ lang }: { lang: Lang }) {
         <div data-reveal>
           <Mono className="text-bone/50">{ex.studio.kicker[lang]}</Mono>
           <div className="mt-6 flex items-center gap-5">
-            <Image src="/brand/omnia-mark.png" alt="" width={256} height={141} className="h-12 w-auto sm:h-16" />
+            <Image src="/brand/omnia-mark.svg" alt="" width={72} height={50} className="h-12 w-auto sm:h-16" />
           </div>
           <h2 lang="en" className="font-wide mt-6 text-[clamp(2.75rem,7.5vw,7rem)] font-extrabold uppercase leading-[0.86] tracking-[-0.03em]">
             Omnia
@@ -275,7 +275,7 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
       return (
         <>
           <Phone src="/apps/onelior/climb.jpg" alt="Onelior Climb screen" className={cn("absolute left-[14%] top-[16%] w-[34%] -rotate-[6deg] max-lg:top-[12%]", lift)} />
-          <Phone src="/apps/onelior/activity.jpg" alt="Onelior Activity screen with the stat compass" className={cn("absolute right-[12%] top-[26%] w-[32%] rotate-[5deg] delay-75 max-lg:top-[22%]", lift)} />
+          <Phone src="/apps/onelior/guide.jpg" alt="Onelior Guide screen with a daily note from the climbing guide" className={cn("absolute right-[12%] top-[26%] w-[32%] rotate-[5deg] delay-75 max-lg:top-[22%]", lift)} />
         </>
       );
     case "dawnia":
@@ -289,7 +289,7 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
       return (
         <>
           <div className={cn("absolute left-[9%] top-[14%] w-[112%] -rotate-[4deg] overflow-hidden rounded-xl bg-[#0b0c10] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10", lift)}>
-            <Image src="/apps/moxakk/match.jpg" alt="Moxakk match analysis: an Arsenal win at 48 percent, most likely 2–1" width={1600} height={765} sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full" />
+            <Image src="/apps/moxakk/analysis.jpg" alt="Moxakk analysis of Arsenal against Liverpool: the analysts against the market, and two of three models agreeing on an Arsenal win" width={1600} height={911} sizes="(min-width: 1024px) 50vw, 100vw" className="h-auto w-full" />
           </div>
           <div className="absolute bottom-[8%] left-[8%] w-[62%] max-w-72 bg-[#111216]/90 p-4 text-white ring-1 ring-white/15">
             <Mono className="text-white/55">{lang === "tr" ? "Üç model · tek okuma" : "Three models · one read"}</Mono>
@@ -310,20 +310,13 @@ function RoutePanel({ app, lang }: { app: App; lang: Lang }) {
     case "cevixa":
       return (
         <>
-          <Image
-            src="/apps/cevixa/icon.svg"
-            alt=""
-            width={320}
-            height={320}
-            className={cn("absolute left-1/2 top-[40%] w-[36%] max-w-64 -translate-x-1/2 -translate-y-1/2 rounded-[22%] shadow-[0_40px_90px_-20px_rgba(0,0,0,0.7)]", lift)}
-          />
-          <div className="absolute bottom-[8%] left-1/2 w-[70%] max-w-80 -translate-x-1/2 bg-[#f6f6ef] p-4 text-[#192020]">
-            <div className="flex items-baseline justify-between">
-              <Mono className="text-[#6b7070]">{lang === "tr" ? "Bu ay kalan" : "Left this month"}</Mono>
-              <span className="text-xl font-semibold tabular-nums">€737.20</span>
-            </div>
-            <div className="mt-3 h-1.5 bg-[#e3e4d8]">
-              <div className="h-full w-[63%] bg-[#cbdc4e]" />
+          <Phone src="/apps/cevixa/layers.jpg" alt="Cevixa Overview in the Layers look, with today's Tempo" className={cn("absolute left-[14%] top-[16%] w-[33%] -rotate-[5deg] max-lg:top-[12%]", lift)} />
+          <Phone src="/apps/cevixa/receipt.jpg" alt="Cevixa Overview in the Receipt roll look" className={cn("absolute right-[13%] top-[26%] w-[31%] rotate-[6deg] delay-75 max-lg:top-[22%]", lift)} />
+          <div className="absolute bottom-[8%] left-1/2 w-[70%] max-w-80 -translate-x-1/2 bg-[#f5f4f0] p-4 text-[#13171b]">
+            <Mono className="text-[#5c626a]">{lang === "tr" ? "Bugün rahatça harcayabileceğin" : "You can still spend today"}</Mono>
+            <div className="mt-1 text-3xl font-semibold tabular-nums">₺330</div>
+            <div className="mt-3 h-1.5 bg-[#edeae3]">
+              <div className="h-full w-[66%] bg-[#3b55f0]" />
             </div>
           </div>
         </>
