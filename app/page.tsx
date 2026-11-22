@@ -1,5 +1,5 @@
-import { Expedition } from "@/components/expedition/expedition";
+import { Site } from "@/components/senior/site";
 
 export default function Home() {
-  return <Expedition />;
+  return <Site />;
 }
