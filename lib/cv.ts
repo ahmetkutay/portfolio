@@ -163,27 +163,3 @@ export const facts: { k: Text; v: Text }[] = [
 ];
 
 export const pick = <T,>(x: Record<Lang, T>, lang: Lang) => x[lang];
-
-/** One line per role, for the simple layout. */
-export const roleBrief: Record<string, Text> = {
-  Accenture: { en: "LLM document pipelines on MCP, an AWS data platform, and performance testing for a design system.", tr: "MCP üzerinde LLM doküman pipeline'ları, bir AWS veri platformu ve bir tasarım sistemi için performans testleri." },
-  "Karnaval Media Group": { en: "Cut page load by 40% across React and Next.js media platforms.", tr: "React ve Next.js medya platformlarında sayfa yüklemeyi %40 kısalttım." },
-  "Orion Innovation": { en: "Led a 6-server cross-region migration with 99.8% data integrity; built monitoring and CI/CD.", tr: "%99,8 veri bütünlüğüyle 6 sunuculuk bölgeler arası taşımayı yönettim; izleme ve CI/CD kurdum." },
-  "Casemice Digital": { en: "A real-time 3D conference space in React and Three.js.", tr: "React ve Three.js ile gerçek zamanlı 3D konferans alanı." },
-};
-
-export const simple = {
-  intro: {
-    en: "I build backend-heavy systems, production AI platforms and native apps — and ship them end to end.",
-    tr: "Backend ağırlıklı sistemler, canlı yapay zekâ platformları ve native uygulamalar geliştiriyor, uçtan uca yayınlıyorum.",
-  },
-  experience: { en: "Experience", tr: "Deneyim" },
-  work: { en: "Selected work", tr: "Seçili işler" },
-  contact: { en: "Contact", tr: "İletişim" },
-  contactTitle: { en: "Let's talk.", tr: "Konuşalım." },
-  studioLine: {
-    en: "I also take on a few freelance projects a year through my studio,",
-    tr: "Stüdyom üzerinden yılda birkaç freelance proje de alıyorum:",
-  },
-  stack: { en: "Node.js · TypeScript · Python · PostgreSQL · Redis · AWS", tr: "Node.js · TypeScript · Python · PostgreSQL · Redis · AWS" },
-} satisfies Record<string, Text>;
