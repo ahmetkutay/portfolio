@@ -124,8 +124,8 @@ export const apps: App[] = [
     category: { en: "Health & Fitness", tr: "Sağlık & Fitness" },
     tagline: { en: "Every workout is altitude.", tr: "Her antrenman bir irtifa." },
     summary: {
-      en: "Workouts, sleep and study flow in from Apple Health and become metres on the way up Everest — then the rest of the Seven Summits. Eight stats form a compass of the athlete you are becoming.",
-      tr: "Antrenman, uyku ve çalışma Apple Health'ten gelir; Everest'e, ardından Yedi Zirve'ye uzanan yolda metreye dönüşür. Sekiz istatistik, dönüştüğün sporcunun pusulasını çizer.",
+      en: "Workouts, sleep and study flow in from Apple Health and become metres on the way up Everest — then the rest of the Seven Summits. A guide walks beside you, and up to four friends can rope up for a shared weekly goal.",
+      tr: "Antrenman, uyku ve çalışma Apple Health'ten gelir; Everest'e, ardından Yedi Zirve'ye uzanan yolda metreye dönüşür. Yanında bir rehber yürür, dört arkadaşa kadar aynı ipe bağlanıp haftalık hedefi birlikte tırmanabilirsin.",
     },
     built: [
       {
@@ -142,7 +142,7 @@ export const apps: App[] = [
       },
     ],
     stack: ["SwiftUI", "HealthKit", "NestJS", "Prisma", "PostgreSQL", "Redis", "Docker"],
-    platforms: ["iOS", "iPadOS"],
+    platforms: ["iOS", "iPadOS", "watchOS"],
     status: "live",
     url: "https://onelior.com",
     appStoreUrl: "https://apps.apple.com/app/onelior/id6789689297",
@@ -154,8 +154,8 @@ export const apps: App[] = [
     category: { en: "Sports · AI", tr: "Spor · Yapay zekâ" },
     tagline: { en: "Read the game before kick-off.", tr: "Maçı başlama düdüğünden önce oku." },
     summary: {
-      en: "Three AI models — Claude, OpenAI and Gemini — read every football match from licensed data: form, lineups, team news and the market. You get one clear answer: what's likely, why, and how sure we are. Every read is scored against the result.",
-      tr: "Üç yapay zekâ modeli — Claude, OpenAI ve Gemini — her futbol maçını lisanslı veriden okur: form, kadrolar, takım haberleri ve piyasa. Sonuçta tek bir net cevap: ne olası, neden ve ne kadar eminiz. Her tahmin maç sonucuyla puanlanır.",
+      en: "Three AI models — Claude, OpenAI and Gemini — read every football match, and now basketball, from licensed data: form, lineups, team news and the market. You get one clear answer: what's likely, why, and how sure we are. Every read is scored in a public track record.",
+      tr: "Üç yapay zekâ modeli — Claude, OpenAI ve Gemini — her futbol maçını, artık basketbolu da, lisanslı veriden okur: form, kadrolar, takım haberleri ve piyasa. Sonuçta tek bir net cevap: ne olası, neden ve ne kadar eminiz. Her tahmin herkese açık bir başarı geçmişinde puanlanır.",
     },
     built: [
       {
@@ -179,12 +179,12 @@ export const apps: App[] = [
   {
     slug: "cevixa",
     name: "Cevixa",
-    icon: "/apps/cevixa/icon.svg",
+    icon: "/apps/cevixa/icon.jpg",
     category: { en: "Finance", tr: "Finans" },
-    tagline: { en: "Every expense, a grain of sand.", tr: "Her harcama bir kum tanesi." },
+    tagline: { en: "How much can you spend today?", tr: "Bugün ne kadar harcayabilirsin?" },
     summary: {
-      en: "Personal and shared expense tracking. Your monthly limit sits in an hourglass — as you spend, sand falls. Bills, receipts, bank CSVs and four currencies in one calm app.",
-      tr: "Kişisel ve ortak harcama takibi. Aylık limitin bir kum saatinde durur; harcadıkça kum akar. Faturalar, fişler, banka CSV'leri ve dört para birimi tek bir sakin uygulamada.",
+      en: "Personal and shared spending. Cevixa turns your monthly limit into one daily number, Tempo: what you can spend today without putting the rest of the month at risk. Bills, receipts, bank CSVs and four currencies, in two looks: Layers and Receipt roll.",
+      tr: "Kişisel ve ortak harcama takibi. Cevixa aylık limitini tek bir günlük rakama, Tempo'ya çevirir: ayın geri kalanını riske atmadan bugün harcayabileceğin tutar. Faturalar, fişler, banka CSV'leri ve dört para birimi; Katmanlar ve Fiş rulosu olmak üzere iki görünümle.",
     },
     built: [
       {
@@ -201,7 +201,7 @@ export const apps: App[] = [
       },
     ],
     stack: ["SwiftUI", "Kotlin", "Jetpack Compose", "FastAPI", "PostgreSQL", "OpenAPI"],
-    platforms: ["iOS", "Android"],
+    platforms: ["iOS"],
     status: "live",
     url: "https://appcevixa.com",
     appStoreUrl: "https://apps.apple.com/app/cevixa-expense-tracker/id6818992503",
@@ -211,10 +211,10 @@ export const apps: App[] = [
     name: "Dawnia",
     icon: "/apps/dawnia/icon.png",
     category: { en: "Health & Habits", tr: "Sağlık & Alışkanlık" },
-    tagline: { en: "Every dose, an inn on the day's road.", tr: "Her doz, günün yolunda bir han." },
+    tagline: { en: "Remember your meds. Enjoy the journey.", tr: "Gününü tamamla, kervan ilerlesin." },
     summary: {
-      en: "A calm medication, habit and task tracker. Doses, habits and to-dos line up on the day's road while a caravan moves from inn to inn. No account, no server — everything stays on the phone.",
-      tr: "Sakin bir ilaç, alışkanlık ve görev takipçisi. Dozlar, alışkanlıklar ve yapılacaklar günün yolunda sıralanır; kervan handan hana ilerler. Hesap yok, sunucu yok — her şey telefonda kalır.",
+      en: "A calm medication, habit and task tracker. Every full day moves a caravan one step down one of twelve historic roads, from the Silk Road to the Tōkaidō, earning each city's seal on the way. On iPhone and Apple Watch. No account, no server — everything stays on the phone.",
+      tr: "Sakin bir ilaç, alışkanlık ve görev takipçisi. Tamamlanan her gün kervanı İpek Yolu'ndan Tōkaidō'ya on iki tarihî yoldan birinde bir adım ilerletir; her şehrin mührü yol boyunca toplanır. iPhone'da ve Apple Watch'ta. Hesap yok, sunucu yok — her şey telefonda kalır.",
     },
     built: [
       {
@@ -231,7 +231,7 @@ export const apps: App[] = [
       },
     ],
     stack: ["SwiftUI", "SwiftData", "WidgetKit", "ActivityKit", "App Intents"],
-    platforms: ["iOS"],
+    platforms: ["iOS", "watchOS"],
     status: "live",
     url: "https://appdawnia.com",
     appStoreUrl: "https://apps.apple.com/app/dawnia/id6819712758",

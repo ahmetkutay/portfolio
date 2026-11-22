@@ -1,25 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, IBM_Plex_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin", "latin-ext"],
-  axes: ["wdth"],
 });
 
-const plexMono = IBM_Plex_Mono({
-  variable: "--font-plex-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500"],
 });
 
 const description =
-  "Software engineer and founder of Omnia Potentia. I design, build and run iOS, Android and web apps — Onelior, Moxakk, Cevixa, Dawnia — and the systems behind them.";
+  "Senior Software Engineer in Istanbul, open to senior roles across Europe. Backend-heavy full-stack: production AI platforms and native apps on Node.js, Python, PostgreSQL, Redis and AWS.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kutaykaracair.com"),
-  title: "Ahmet Kutay Karacair — Software engineer & founder of Omnia Potentia",
+  title: "Ahmet Kutay Karacair — Senior Software Engineer",
   description,
   openGraph: {
     title: "Ahmet Kutay Karacair",
@@ -36,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c100f",
+  themeColor: "#08090b",
 };
 
 export default function RootLayout({
@@ -54,7 +52,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${archivo.variable} ${plexMono.variable} antialiased`}>
+      <body className={`${geist.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>
